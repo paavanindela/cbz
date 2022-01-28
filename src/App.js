@@ -1,35 +1,21 @@
 import logo from './logo.svg';
 import Match from './components/match';
+import Layout from './components/layout';
 import Error
  from './components/error/error';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route ,Navigate} from "react-router-dom";
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <BrowserRouter>
-      <Routes>
-        <Route path="/match" element={<Match />}/>
-        <Route path="*" element={<Error />} />
-      </Routes>
-      </BrowserRouter>
-    </div>
-  );
-}
+  return <BrowserRouter>
+   <Layout>
+       <Routes>
+          {/* <Navigate exact={true} from={"/"} to={"/home"}/> */}
+          <Route path="/match" element={<Match />}/>
+          <Route path="*" element={<Error />} />
+       </Routes>
+   </Layout>
+ </BrowserRouter>
+};
 
 export default App;
