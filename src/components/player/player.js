@@ -1,13 +1,13 @@
 import React from 'react';
-import { ButtonGroup,Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import styles from './player.scss';
+import { withRouter } from '../withRouter';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet, } from 'react-router-dom';
-import { withRouter } from '../withRouter';
-import MatchList from './matchlist';
 
-const url = 'http://localhost:5000/matches/'
+const url = 'http://localhost:5000/players/'
 
-class Match extends React.Component {
+class Player extends React.Component {
 	static navigationOptions = {
 		title: 'Selected Item',
 		header: null,
@@ -33,7 +33,7 @@ class Match extends React.Component {
 			page: this.state.pageNo,
 		}
 		// console.log(this.state.pageNo);
-		fetch(url + '?' + (new URLSearchParams(params)).toString(), {
+		fetch(url + "20", {
 			method: "GET",
 			headers: {
 				Accept: "application/json",
@@ -47,20 +47,14 @@ class Match extends React.Component {
 			})
 			.then(rdata => {
 				this.setState({
-					data: rdata.data,
+					data: rdata,
 					loading: r,
 				});
 				// console.log(this.state.data)
 			});
 	};
-	getNext = (stride) => {
-		this.setState({
-			loading: 0,
-			pageNo: Math.max(this.state.pageNo + stride, 1)
-		}, () => { this.getMatches() });
-	};
 	render() {
-		if ("matchId" in this.props.params)
+		if ("playerId" in this.props.params)
 			return (
 				<div>
 					<Outlet />
@@ -72,18 +66,8 @@ class Match extends React.Component {
 		else return (
 			<div className="App">
 				<header className='title'>
-					MATCHES
+					PLAYER
 				</header>
-				<MatchList data={this.state.data} />
-				<ButtonGroup size="lg" className="mb-2" >
-					<Button onClick={() => this.getNext(-1)} variant="danger">
-						PREV
-					</Button>
-					<Button onClick={() => this.getNext(1)} variant="success">
-						NEXT
-					</Button>
-				</ButtonGroup>
-				<Outlet />
 			</div>
 		);
 		return (
@@ -98,10 +82,19 @@ class Match extends React.Component {
 }
 
 
-const matchPropTypes = {
+// todo: Unless you need to use lifecycle methods or local state,
+// write your component in functional form as above and delete
+// this section. 
+// class player extends React.Component {
+//   render() {
+//     return <div>This is a component called player.</div>;
+//   }
+// }
+
+const playerPropTypes = {
 	// always use prop types!
 };
 
-Match.propTypes = matchPropTypes;
+Player.propTypes = playerPropTypes;
 
-export const Smatch = withRouter(Match);
+export const Splayer = withRouter(Player);

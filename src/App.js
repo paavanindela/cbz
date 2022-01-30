@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
 import {Smatch}from './components/match/match'
 import { EachMatch } from './components/match/eachMatch';
+import { Splayer } from './components/player/player';
+import { EachPlayer } from './components/player/eachPlayer';
+import { SPointsTable} from './components/pointstable/pointstable';
+import { EachYear} from './components/pointstable/eachYear';
 
 function App() {
   return <BrowserRouter>
@@ -13,6 +17,12 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route path="/matches" element={<Smatch />}>
           <Route path=":matchId" element={<EachMatch />} />
+        </Route>
+        <Route path="/players" element={<Splayer />}>
+          <Route path=":playerId" element={<EachPlayer />} />
+        </Route>
+        <Route path="/pointstable" element={<SPointsTable/>}>
+          <Route path=":year" element={<EachYear />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Route>

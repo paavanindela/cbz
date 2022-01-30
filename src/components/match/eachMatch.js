@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container,ButtonGroup, Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Container, ButtonGroup, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { withRouter } from '../withRouter';
 import Compare from './compare';
-import { Mirow, Extatot, CreateTable} from './tablerow';
+import { Mirow, Extatot, CreateTable } from './helper';
 import Summary from './summary';
 
 const url = 'http://localhost:5000/matches/'
@@ -147,13 +147,13 @@ class rMatch extends React.Component {
 					<Button onClick={() => { this.changeComponent(5) }}>Summary</Button>
 				</ButtonGroup>
 				<p></p>
-				<Component index={this.state.component} data={this.state.data} matchId={this.state.matchId} className="wrapper" />
+				<Component index={this.state.component} data={this.state.data} matchId={this.state.matchId} />
 				<p></p>
-				<button variant="primary">
+				<Button variant="warning">
 					<Link to={"/matches"} style={{ textDecoration: "none" }}>
 						Back
 					</Link>
-				</button>
+				</Button>
 			</div>
 		);
 		return (

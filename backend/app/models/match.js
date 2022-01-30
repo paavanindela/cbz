@@ -98,11 +98,11 @@ async function getComparison(id) {
 async function getSummary(id) {
 
   const total1 = await pool.query(
-    "SELECT total, wickets FROM total WHERE id=$1 AND inning=$2", 
+    "SELECT total, wickets, over FROM total WHERE id=$1 AND inning=$2", 
     [id, 1]
   );
   const total2 = await pool.query(
-    "SELECT total, wickets FROM total WHERE id=$1 AND inning=$2", 
+    "SELECT total, wickets, over  FROM total WHERE id=$1 AND inning=$2", 
     [id, 2]
   );
   const summary = await pool.query(
@@ -118,11 +118,11 @@ async function getSummary(id) {
     [id,2]
   )
   const bowling1 = await pool.query(
-    "SELECT bowler, runs, wickets, player_name FROM match_summary2 where match_id=$1 AND innings_no=$2",
+    "SELECT bowler, runs, wickets, 1.0*balls/6.0 as over, player_name FROM match_summary2 where match_id=$1 AND innings_no=$2",
     [id,1]
   )
   const bowling2 = await pool.query(
-    "SELECT bowler, runs, wickets, player_name FROM match_summary2 where match_id=$1 AND innings_no=$2",
+    "SELECT bowler, runs, wickets, 1.0*balls/6.0 as over, player_name FROM match_summary2 where match_id=$1 AND innings_no=$2",
     [id,2]
   )
   const season_year = await pool.query(

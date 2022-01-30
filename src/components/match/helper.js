@@ -11,7 +11,7 @@ function TableRow(props) {
 		<tr key={props.id}>
 			{row.map((val, idx) => {
 				if (idx == 0) {
-					return <td key={idx}><Link to={"/player/" + id}>{val}</Link></td>;
+					return <td key={idx}><Link to={"/players/" + id}>{val}</Link></td>;
 				}
 				else {
 					return <td key={idx}>{val}</td>;

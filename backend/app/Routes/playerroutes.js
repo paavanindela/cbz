@@ -11,6 +11,16 @@ module.exports = function (app) {
             console.error(error.message);
         }
     });
+
+    app.get("/pointstable",async (req, res)=>{
+        try {
+            const pageno = req.query.page;
+            const yearList = await player.getYear();
+            res.json(yearList);
+        } catch (error) {
+            console.error(error.message);
+        }
+    });
     
     app.get("/pointstable/:year", async (req, res)=>{
         try {

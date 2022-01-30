@@ -1,4 +1,4 @@
-import { Container, Row, Col, ButtonGroup, Card, Nav, Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Container, Row, Col,  Button,} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import  styles from './match.scss';
 
@@ -18,7 +18,7 @@ function IndMatch(props) {
 			<Row className="row-dark-3">
 				<Col className="col-dark-2">{entry.matchwinner} won by {entry.win_margin} {entry.win_type}</Col>
 				<button variant="primary">
-					<Link to={"/matches/" + String(entry.match_id)} style={{ textDecoration: "none" }}>
+					<Link to={"/matches/" + String(entry.match_id)} style={{textDecoration: "none" }}>
 						More Details
 					</Link>
 				</button>
