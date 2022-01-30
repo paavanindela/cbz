@@ -49,11 +49,26 @@
         color: rgb(253, 212, 159);
     }
 };
+.row-dark-4{
+    @extend .row;
+    background: rgb(253, 212, 159);
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    place-content: flex-end;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid rgb(0, 0, 0);
+    font-family: 'Mochiy Pop P one', sans-serif;
+    :hover{
+        background-color: rgb(0, 0, 0);
+    }
+};
 .col-dark-1{
     @extend .col;
     display: flex;
     align-items: center;
-    height: 70px;
+    min-height: 70px;
     border: 0.25px solid rgb(0, 0, 0);
 };
 .col-dark-2{
@@ -76,6 +91,27 @@
     color:rgb(62, 0, 119);
     font-family: 'Mochiy Pop P one', sans-serif;
 };
+.sub-title{
+    display: grid;
+    place-items: center;
+    height: 80px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color:rgb(62, 0, 119);
+    font-family: 'Mochiy Pop P one', sans-serif;
+};
+.text{
+    display: grid;
+    place-items: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    color:rgb(62, 0, 119);
+    font-family: 'Mochiy Pop P one', sans-serif;
+    border: 0.25px solid rgb(0, 0, 0);
+};
 .wrapper {
     text-align: center;
 }
@@ -92,3 +128,23 @@
     padding: 2px 5px;
     border: 1px solid black;
 }
+.hoverTable{
+		width:100%; 
+		border-collapse:collapse; 
+	}
+	.hoverTable td{ 
+		padding:7px; border:rgb(0, 0, 0) 1px solid;
+	}
+    .hoverTable th{ 
+		padding:7px; border:#000000 1.25px solid;
+	}
+	/* Define the default color for all the table rows */
+	.hoverTable tr{
+		background: rgb(253, 212, 159);
+	}
+	/* Define the hover highlight color for the table row */
+    .hoverTable tr:hover {
+          background-color: rgb(0, 0, 0);
+          color:rgb(253, 212, 159);
+          border-color: rgb(253, 212, 159) 1.25px solid;
+    }

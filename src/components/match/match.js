@@ -1,49 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import styles from './match.scss';
-import logo from './../../logo.svg';
-import { Container, Row, Col, ButtonGroup, Card } from 'react-bootstrap';
+import React from 'react';
+import { ButtonGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Outlet, } from 'react-router-dom';
+import { withRouter } from '../withRouter';
+import MatchList from './matchlist';
 
-function IndMatch(props) {
-	const entry = props.entry
-	return (
-		<Container className='container-dark'>
-			<Row className="row-dark-1">
-				<Col className="col-dark-1">{entry.team_1} </Col>
-				<Col md="auto" className="col-dark-1"> VS</Col>
-				<Col className="col-dark-1">{entry.team_2} </Col>
-			</Row>
-			<Row className="row-dark-2">
-				<Col className="col-dark-1">{entry.venue_name} </Col>
-				<Col className="col-dark-1">{entry.city_name} </Col>
-			</Row>
-			<Row className="row-dark-3">
-				<Col className="col-dark-2">{entry.matchwinner} won by {entry.win_margin} {entry.win_type}</Col>
-				<button variant="primary" onClick={
-					() => {
-						console.log(entry.match_id);
-					}
-				}>
-					More Details
-				</button>
-			</Row>
-			<Row className="row-min"></Row>
-		</Container>
-	);
-}
-
-function MatchList(props) {
-	const data = props.data;
-	const listItems = data.map((entry, id) =>
-		<IndMatch key={id} entry={entry} />
-	);
-	return (
-		// <div className='wrapper'>
-		<ul>{listItems}</ul>
-		// </div>
-	);
-}
+const url = 'http://localhost:5000/matches/'
 
 class Match extends React.Component {
 	static navigationOptions = {
@@ -67,7 +29,6 @@ class Match extends React.Component {
 	}
 	getMatches = () => {
 		let r = 0;
-		const url = 'http://localhost:5000/matches/'
 		const params = {
 			page: this.state.pageNo,
 		}
@@ -80,7 +41,7 @@ class Match extends React.Component {
 			},
 		})
 			.then(response => {
-				if (response.status == 200 || response.status === 304) r = 2;
+				if (response.status === 200 || response.status === 304) r = 2;
 				else r = 1;
 				return response.json();
 			})
@@ -99,6 +60,12 @@ class Match extends React.Component {
 		}, () => { this.getMatches() });
 	};
 	render() {
+		if ("matchId" in this.props.params)
+			return (
+				<div className="App">
+					<Outlet />
+				</div>
+			);
 		let text = "";
 		if (this.state.loading === 0) text = "LOADING";
 		else if (this.state.loading === 1) text = "FAILED TO LOAD DATA";
@@ -116,6 +83,7 @@ class Match extends React.Component {
 						NEXT
 					</button>
 				</ButtonGroup>
+				<Outlet />
 			</div>
 		);
 		return (
@@ -129,10 +97,11 @@ class Match extends React.Component {
 	}
 }
 
+
 const matchPropTypes = {
 	// always use prop types!
 };
 
 Match.propTypes = matchPropTypes;
 
-export default Match;
+export const Smatch = withRouter(Match);

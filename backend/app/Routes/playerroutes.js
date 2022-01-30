@@ -1,11 +1,22 @@
 
-const pool = require('../db');
-// const match = require('../models/match')
+const player = require('../models/player')
 
 module.exports = function (app) {
-    app.get("/players", async (req, res)=>{
+    app.get("/players/:id", async (req, res)=>{
         try {
-            console.log('OK Working 1');
+            const id = req.params.id;
+            const result = await player.getOne(id);
+            res.json(result);
+        } catch (error) {
+            console.error(error.message);
+        }
+    });
+    
+    app.get("/pointstable/:year", async (req, res)=>{
+        try {
+            const year = req.params.year;
+            const result = await player.getTable(year);
+            res.json(result);
         } catch (error) {
             console.error(error.message);
         }
