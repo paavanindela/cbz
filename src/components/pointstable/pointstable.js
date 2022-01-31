@@ -5,22 +5,23 @@ import { withRouter } from '../withRouter';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet,Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import { Table } from 'reactstrap'
 const url = 'http://localhost:5000/pointstable/'
 
 function SelectYear(props){
+	
 	const rowList = props.data.map((val,idx) =>
-			<Row key={idx} className='row-dark-1'>
-				<Col>
-					<Link to={"/pointstable/"+String(val.season_year)}>{val.season_year}</Link>
-				</Col>
-			</Row>
+				<li>
+					<a style={{ fontWeight: 'bold'}} href={'http://localhost:3000/pointstable/'+String(val.season_year)}>{val.season_year}</a>
+				</li>
 		);
 	return <Container className='container-dark'>
 		<h3 className='sub-title'>
 			CHOOSE YEAR
 		</h3>
+		<ul> 
 		{rowList}
+		</ul>
 	</Container>
 }
 
