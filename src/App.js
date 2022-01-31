@@ -10,6 +10,8 @@ import { Splayer } from './components/player/player';
 import { EachPlayer } from './components/player/eachPlayer';
 import { SPointsTable} from './components/pointstable/pointstable';
 import { EachYear} from './components/pointstable/eachYear';
+import { SVenues } from './components/venues/venues';
+import { EachVenue } from './components/venues/eachVenue';
 
 function App() {
   return <BrowserRouter>
@@ -24,6 +26,10 @@ function App() {
         <Route path="/pointstable" element={<SPointsTable/>}>
           <Route path=":year" element={<EachYear />} />
         </Route>
+        <Route path="/venue" element={<SVenues/>}>
+          <Route path=":venueId" element={<EachVenue />} />
+        </Route>
+        <Route path="/venues" element={<SVenues/>}></Route>
         <Route path="*" element={<Error />} />
       </Route>
     </Routes>

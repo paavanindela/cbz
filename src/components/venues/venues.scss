@@ -1,0 +1,170 @@
+@import "bootstrap";
+.container-dark{
+    @extend .container;
+    width: 90%;
+}
+.container-dark-2{
+    @extend .container;
+    width: 90%;
+    background-color: aliceblue;
+}
+.row-dark-1{
+    @extend .row;
+    background: rgb(41, 252, 153);
+    color: rgb(0, 0, 0);
+    font-size: 1.1rem;
+    align-items: center;
+    font-weight: 500;
+    border: 1px solid rgb(0, 0, 0);
+    font-family: 'Mochiy Pop P one', sans-serif;
+    :hover{
+        background-color: rgb(0, 0, 0);
+        color: rgb(41, 252, 153);
+    }
+};
+.row-dark-2{
+    @extend .row;
+    background: rgb(123, 238, 247);
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    place-content: flex-start;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid rgb(0, 0, 0);
+    font-family: 'Mochiy Pop P one', sans-serif;
+    :hover{
+        background-color: rgb(0, 0, 0);
+        color:rgb(123, 238, 247);
+    }
+};
+.row-dark-3{
+    @extend .row;
+    background: rgb(253, 212, 159);
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    place-content: flex-end;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid rgb(0, 0, 0);
+    font-family: 'Mochiy Pop P one', sans-serif;
+    :hover{
+        background-color: rgb(0, 0, 0);
+        color: rgb(253, 212, 159);
+    }
+};
+.row-dark-4{
+    @extend .row;
+    background: rgb(41, 252, 153);
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid rgb(0, 0, 0);
+    font-family: 'Mochiy Pop P one', sans-serif;
+    :hover{
+        background-color: rgb(0, 0, 0);
+    }
+};
+.col-dark-1{
+    @extend .col;
+    display: flex;
+    align-items: center;
+    min-height: 70px;
+    border: 0.25px solid rgb(0, 0, 0);
+};
+.col-dark-2{
+    @extend .col;
+    display: flex;
+    align-items: center;
+    height: calc(100% - 100px);
+    border: 0.25px solid rgb(0, 0, 0);
+};
+.row-min{
+    @extend .row;
+    min-height: 20px;
+}
+.title{
+    display: grid;
+    place-items: center;
+    height: 120px;
+    font-size: 2rem;
+    font-weight: 700;
+    color:rgb(62, 0, 119);
+    font-family: 'Mochiy Pop P one', sans-serif;
+};
+.sub-title{
+    display: grid;
+    place-items: center;
+    height: 80px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color:rgb(62, 0, 119);
+    font-family: 'Mochiy Pop P one', sans-serif;
+};
+.text{
+    display: grid;
+    place-items: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    min-height: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    color:rgb(62, 0, 119);
+    font-family: 'Mochiy Pop P one', sans-serif;
+    border: 0.25px solid rgb(0, 0, 0);
+};
+.wrapper {
+    text-align: center;
+}
+.wrapper ul {
+    // display: inline-block;
+    margin: 0;
+    padding: 0;
+    /* For IE, the outcast */
+    zoom:1;
+    *display: inline;
+}
+.wrapper li {
+    float: left;
+    padding: 2px 5px;
+    border: 1px solid black;
+}
+.hoverTable{
+		width:100%; 
+		border-collapse:collapse; 
+	}
+	.hoverTable td{ 
+		padding:7px; border:rgb(0, 0, 0) 1px solid;
+	}
+    .hoverTable th{ 
+		padding:7px; border:#000000 1.25px solid;
+        background-color: rgb(123, 238, 247);
+	}
+	/* Define the default color for all the table rows */
+	.hoverTable tr{
+		background: rgb(253, 212, 159);
+	}
+	/* Define the hover highlight color for the table row */
+    .hoverTable tr:hover {
+          background-color: rgb(0, 0, 0);
+          color:rgb(247, 140, 0);
+          border-color: rgb(253, 212, 159) 1.25px solid;
+    }
+    .hoverTable th:hover {
+        background-color: rgb(0, 0, 0);
+        color:rgb(123, 238, 247);
+        border-color: rgb(123, 238, 247) 1.25px solid;
+  }
+.lr{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.mydiv{
+    @extend .container-dark;
+    margin-left: 10%;
+    margin-right: 10%;
+    min-height: 40%;
+}
