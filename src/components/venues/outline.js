@@ -18,6 +18,7 @@ function Outline(props) {
         ["Team bowling First Victories", Number(props.data.bowlingwin)],
         ["Draw", Number(props.data.draw)],
     ];
+    if(props.data.matches > 0)
     return (
         <Container className='container-dark'>
             <div className='row-dark-1'>
@@ -35,6 +36,7 @@ function Outline(props) {
             </div>
         </Container>
     );
+    return <h2>No Data</h2>
 }
 
 export default Outline

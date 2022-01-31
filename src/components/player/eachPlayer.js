@@ -63,7 +63,7 @@ function Component(props) {
                     <Mirow name="MATCHES" data={data.bowlingstats.matches} type="2" coltype="2" />
                     <Mirow name="RUNS" data={data.bowlingstats.runs} type="3" coltype="2" />
                     <Mirow name="BALLS" data={data.bowlingstats.balls} type="1" coltype="2" />
-                    <Mirow name="OVERS" data={data.bowlingstats.overs} type="2" coltype="2" />
+                    <Mirow name="OVERS" data={Math.floor(data.bowlingstats.overs)+"."+Math.round(6*data.bowlingstats.overs%1)} type="2" coltype="2" />
                     <Mirow name="WICKETS" data={data.bowlingstats.wickets} type="3" coltype="2" />
                     <Mirow name="ECONOMY" data={data.bowlingstats.economy} type="1" coltype="2" />
                     <Mirow name="FIFERS" data={data.bowlingstats.fivewicket} type="2" coltype="2" />

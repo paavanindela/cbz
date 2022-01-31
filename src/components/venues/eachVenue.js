@@ -79,7 +79,9 @@ class rvenue extends React.Component {
                 return response.json();
             })
             .then(rdata => {
+                
                 this.setState({
+
                     data: rdata.data,
                     graph: rdata.graph,
                     loading: r,
@@ -115,6 +117,7 @@ class rvenue extends React.Component {
                             Back
                         </Link>
                     </Button>
+                    
                 </div>
             );
         }

@@ -4,11 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { withRouter } from '../withRouter';
 import { Outlet,Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import styles from  './venues.scss'
-
+import styles from  './venues.scss';
+import Create  from './create';
 const url = 'http://localhost:5000/venue/'
 
 function SelectVenue(props){
+	const index = props.index;
 	const rowstyles = ['row-dark-1','row-dark-2','row-dark-3']
 	const rowList = props.data.map((val,idx) =>
 			<Row key={idx} className={rowstyles[idx%3]}>
@@ -19,12 +20,19 @@ function SelectVenue(props){
 				</Col>
 			</Row>
 		);
-	return <Container className='container-dark'>
-		<h3 className='sub-title'>
+		console.log(index);
+		if(index === 1){
+		
+	return (<Container className='container-dark'>
+		{/* <h3 className='sub-title'>
 			CHOOSE VENUE
-		</h3>
+		</h3> */}
 		{rowList}
-	</Container>
+	</Container>);}
+	if (index === 2){
+		return (<Create/>);
+	}
+	return <div></div>;
 }
 
 class Venues extends React.Component {
@@ -37,6 +45,7 @@ class Venues extends React.Component {
 		this.state = {
 			data: null,
 			loading: 0,
+			component: 1,
 		};
 	}
 	componentDidMount() {
@@ -44,6 +53,11 @@ class Venues extends React.Component {
 	}
 	componentDidUpdate() {
 
+	}
+	changeComponent(index){
+		this.setState(
+			{component: index}
+		)
 	}
 	getVenues = () => {
 		let r = 0;
@@ -86,8 +100,17 @@ class Venues extends React.Component {
 				<header className='title'>
 					VENUES
 				</header>
-				<SelectVenue data={this.state.data}/>
-				<p></p>
+				{ this.state.component == 1?
+				(
+                <button className = "btn btn-success" style={{marginTop:-20, marginBottom: 10}} onClick={() => { this.changeComponent(2) }}>Create New Venue</button>
+                        
+                ):<></>
+				}    
+                    <SelectVenue index={this.state.component} data={this.state.data} />
+                    
+                    
+				{/* <SelectVenue data={this.state.data}/> */}
+				
 			</div>
 		);
 		return (

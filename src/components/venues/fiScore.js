@@ -20,7 +20,10 @@ function FiScore(props) {
             Number(val.season_year), Number(val.score)
         ])
     );
+
+    if (props.graph.length > 0){
     return (
+        
         <Container className='container-dark'>
             <div className='row-dark-1'>
                 <Col></Col>
@@ -36,7 +39,11 @@ function FiScore(props) {
                 <Col></Col>
             </div>
         </Container>
-    );
+        ); 
+    }
+    return(
+        <h2>No Data </h2>
+    )
 }
 
 export default FiScore

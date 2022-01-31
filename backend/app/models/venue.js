@@ -27,10 +27,10 @@ async function getOne(id) {
   }
 
   async function post(body) {
-    const {venue_name, city_name, country_name, capacity} = body; 
+    const {name, city, country, capacity} = body; 
     const data = await pool.query(
         "INSERT INTO venue (venue_name, city_name, country_name, capacity) values($1,$2,$3,$4) RETURNING *"
-        , [venue_name, city_name, country_name, capacity]
+        , [name, city, country, capacity]
     );
     
     

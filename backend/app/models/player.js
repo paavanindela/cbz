@@ -39,7 +39,7 @@ async function getOne(id) {
 
 async function getYear() {
   const data = await pool.query(
-    "SELECT distinct season_year FROM match",
+    "SELECT distinct season_year FROM match order by season_year",
   );
 
   return {

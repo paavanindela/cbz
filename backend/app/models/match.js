@@ -75,11 +75,11 @@ async function getSingle(id) {
 async function getComparison(id) {
 
   const inning1 = await pool.query(
-    "SELECT ball_no, runs, wickets FROM worm WHERE match_id=$1 AND innings_no=$2 ORDER BY ball_no", 
+    "SELECT ball_no, cumruns, wickets FROM worm WHERE match_id=$1 AND innings_no=$2 ORDER BY ball_no", 
     [id, 1]
   );
   const inning2 = await pool.query(
-    "SELECT ball_no, runs, wickets FROM worm WHERE match_id=$1 AND innings_no=$2 ORDER BY ball_no", 
+    "SELECT ball_no, cumruns, wickets FROM worm WHERE match_id=$1 AND innings_no=$2 ORDER BY ball_no", 
     [id, 2]
   );
   const summary = await pool.query(
@@ -118,11 +118,11 @@ async function getSummary(id) {
     [id,2]
   )
   const bowling1 = await pool.query(
-    "SELECT bowler, runs, wickets, 1.0*balls/6.0 as over, player_name FROM match_summary2 where match_id=$1 AND innings_no=$2",
+    "SELECT bowler, runs, wickets, over, player_name FROM match_summary2 where match_id=$1 AND innings_no=$2",
     [id,1]
   )
   const bowling2 = await pool.query(
-    "SELECT bowler, runs, wickets, 1.0*balls/6.0 as over, player_name FROM match_summary2 where match_id=$1 AND innings_no=$2",
+    "SELECT bowler, runs, wickets, over, player_name FROM match_summary2 where match_id=$1 AND innings_no=$2",
     [id,2]
   )
   const season_year = await pool.query(
