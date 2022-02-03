@@ -26,10 +26,9 @@ function App() {
         <Route path="/pointstable" element={<SPointsTable/>}>
           <Route path=":year" element={<EachYear />} />
         </Route>
-        <Route path="/venue" element={<SVenues/>}>
+        <Route path="/venues" element={<SVenues/>}>
           <Route path=":venueId" element={<EachVenue />} />
         </Route>
-        <Route path="/venues" element={<SVenues/>}></Route>
         <Route path="*" element={<Error />} />
       </Route>
     </Routes>

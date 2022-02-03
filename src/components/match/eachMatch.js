@@ -133,10 +133,9 @@ class rMatch extends React.Component {
 		else if (this.state.loading === 1) text = "FAILED TO LOAD DATA";
 		else return (
 			<div className='App'>
-				<header className='title'>
+				{/* <header className='title'>
 					Match: {this.state.matchId}
-				</header>
-				<p></p>
+				</header> */}
 				<ButtonGroup>
 					<DropdownButton as={ButtonGroup} title="Scorecard" id="bg-nested-dropdown">
 						<Dropdown.Item eventKey="innings1" onClick={() => { this.changeComponent(1) }}>INNINGS 1</Dropdown.Item>
@@ -146,7 +145,6 @@ class rMatch extends React.Component {
 					<Button onClick={() => { this.changeComponent(4) }}>Score Comparison</Button>
 					<Button onClick={() => { this.changeComponent(5) }}>Summary</Button>
 				</ButtonGroup>
-				<p></p>
 				<Component index={this.state.component} data={this.state.data} matchId={this.state.matchId} />
 				<p></p>
 				<Button variant="warning">

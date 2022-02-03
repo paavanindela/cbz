@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './pointstable.scss'
 
@@ -26,6 +26,16 @@ function CreateTable(props) {
 		return entry[props.keyname]
 	})
 	// console.log(body)
+	return <div className='ipl-table-wrapper'>
+		<div className='table-section'>
+			<div>
+				<table className='ipl-table'>
+					<thead><tr className='head'>{headers.map((head, id) => <th key={id}>{head}</th>)}</tr></thead>
+					<tbody>{body.map((row, id) => <TableRow key={id} row={row} id={player_id[id]} type={"1"} />)}</tbody>
+				</table>
+			</div>
+		</div>
+	</div>;
 	return <Container>
 		<table className='hoverTable'>
 			<thead><tr>{headers.map((head, id) => <th key={id}>{head}</th>)}</tr></thead>
@@ -34,4 +44,4 @@ function CreateTable(props) {
 	</Container>;
 }
 
-export {CreateTable,TableRow}
+export { CreateTable, TableRow }

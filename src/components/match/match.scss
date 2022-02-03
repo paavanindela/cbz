@@ -1,4 +1,11 @@
 @import "bootstrap";
+* {
+    box-sizing: border-box;
+}
+.container-dark{
+    @extend .container;
+    width: 90%;
+}
 .title{
     display: grid;
     place-items: center;
@@ -11,7 +18,7 @@
 .sub-title{
     display: grid;
     place-items: center;
-    height: 80px;
+    // height: 80px;
     font-size: 1.5rem;
     font-weight: 700;
     color:rgb(62, 0, 119);

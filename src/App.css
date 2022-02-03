@@ -38,3 +38,157 @@
     transform: rotate(360deg);
   }
 }
+
+.ipl-table-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5% 5%;
+  overflow: hidden;
+  position: relative;
+}
+.ipl-table-wrapper sup {
+  margin-right: -0.45vw;
+}
+ /* .ipl-table-wrapper:after {
+     content: "";
+     position: absolute;
+     width: 150%;
+     height: 100%;
+    background-image: linear-gradient(60deg, rgba(35, 40, 130, 0.5) 20%, rgba(255, 30, 80, 1));
+     border-radius: 0% 5000px 5000px 0%;
+     top: 50%;
+     z-index: 1;
+    transform: translate(-25%, -40%) rotate(-45deg);
+ } */
+.ipl-table-wrapper .table-section {
+  display: flex;
+  justify-content: space-around;
+  z-index: 2;
+}
+.ipl-table-wrapper .table-section > div {
+  width: 48%;
+}
+.ipl-table-wrapper .table-section > div .table-title {
+  color: #232882;
+  font-weight: bold;
+  background-color: #fff;
+  border-radius: 500px;
+  margin-bottom: 15px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 105%;
+  padding: 15px 25px;
+  font-size: 1.25vw;
+}
+.ipl-table-wrapper .table-section > div .table-title img {
+  width: 60px;
+  vertical-align: middle;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.ipl-table-wrapper .table-section > div:first-child .table-title {
+  margin-left: -30px;
+  text-align: right;
+}
+.ipl-table-wrapper .table-section > div:last-child .table-title {
+  margin-left: 0px;
+}
+.ipl-table-wrapper .table-section > div .ipl-table {
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ipl-table-wrapper .table-section > div .ipl-table tr.head {
+  background-image: linear-gradient(80deg, #ff1e50 20%, #232882);
+}
+.ipl-table-wrapper .table-section > div .ipl-table tr.head th, .ipl-table-wrapper .table-section > div .ipl-table tr.head td {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.25vw;
+  padding: 10px 15px;
+  text-align: center;
+  background-color: transparent !important;
+}
+.ipl-table-wrapper .table-section > div .ipl-table tbody td {
+  color: #232882;
+  font-weight: bold;
+  font-size: 1vw;
+  padding: 10px 15px;
+  overflow: hidden;
+  background-color: #fff;
+}
+.ipl-table-wrapper .table-section > div .ipl-table tbody td:first-child {
+  box-shadow: inset 0px 20px 35px -15px rgba(35, 40, 130, 0.15);
+}
+.ipl-table-wrapper .table-section > div .ipl-table tbody td:last-child {
+  font-weight: normal;
+}
+.ipl-table-wrapper .table-section > div .ipl-table tbody td:not(:first-child) {
+  min-width: 70px;
+  max-width: 90px;
+  box-shadow: inset 20px 20px 35px -15px rgba(35, 40, 130, 0.15);
+  border-left: 2px solid #ff1e50;
+  text-align: center;
+}
+.ipl-table-wrapper .table-section > div .ipl-table tbody tr.head td {
+  font-size: 1.25vw;
+}
+.ipl-table-wrapper .footer-section {
+  z-index: 2;
+}
+.ipl-table-wrapper .footer-section .ipl-table-footer {
+  color: #232882;
+  font-weight: bold;
+  background-color: #fff;
+  border-radius: 500px;
+  margin-bottom: 15px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+  width: 102% !important;
+  font-size: 1.25vw;
+  text-align: center;
+  padding: 20px 25px;
+  margin-top: 12px;
+  margin-left: -15px;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .ipl-table-wrapper .table-section {
+      flex-wrap: wrap;
+ }
+  .ipl-table-wrapper .table-section > div {
+      width: 96%;
+ }
+  .ipl-table-wrapper .table-section > div .table-title {
+      font-size: 5.5vw;
+ }
+  .ipl-table-wrapper .table-section > div:first-child .table-title {
+      margin-left: -15px;
+ }
+  .ipl-table-wrapper .table-section > div:last-child .table-title {
+      margin-left: -15px;
+      margin-top: 15px;
+ }
+  .ipl-table-wrapper .table-section > div .ipl-table tr.head th, .ipl-table-wrapper .table-section > div .ipl-table tr.head td {
+      font-size: 5.5vw;
+ }
+  .ipl-table-wrapper .table-section > div .ipl-table tbody td {
+      font-size: 3.2vw;
+ }
+  .ipl-table-wrapper .table-section > div .ipl-table tbody tr.head td {
+      font-size: 4vw;
+ }
+  .ipl-table-wrapper .footer-section .ipl-table-footer {
+      margin-left: -7.5px;
+      font-size: 4vw;
+ }
+  .ipl-table-wrapper:after {
+      width: 95%;
+      height: 120%;
+      border-radius: 500px 500px 0% 0%;
+      top: 50%;
+      transform: translate(-5%, -50%) rotate(15deg);
+ }
+}

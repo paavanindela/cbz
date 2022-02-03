@@ -15,7 +15,7 @@ function SelectVenue(props){
 			<Row key={idx} className={rowstyles[idx%3]}>
 				<Col className='col-dark-1'>
 					<Col>
-						<Link to={"/venue/"+String(val.venue_id)}>{val.venue_name}</Link>
+						<Link to={"/venues/"+String(val.venue_id)}>{val.venue_name}</Link>
 					</Col>
 				</Col>
 			</Row>

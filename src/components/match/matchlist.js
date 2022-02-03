@@ -24,7 +24,7 @@ function IndMatch(props) {
 		<Link to={"/matches/" + String(entry.match_id)} style={{ textDecoration: "none" }}>
 			<div style={{width:"80%",marginLeft:"10%"}}>
 				<div className='match-card'>
-					<h2>{entry.match_id}</h2>
+					<h2>Match ID: {entry.match_id}</h2>
 					<div className='match-details'>
 						<div className='team1'>
 							<img src={imgLs[entry.team1 -1]}></img>
