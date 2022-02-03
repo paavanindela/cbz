@@ -212,7 +212,7 @@ ALTER TABLE venue ALTER COLUMN venue_id SET DEFAULT nextval('auto_venue_id');
 select setval('auto_venue_id', 119);
 
 CREATE VIEW match_summary AS
-SELECT match_id, team_1, team_2, venue_name, city_name, (CASE WHEN match_winner=team1 THEN team_1 ELSE team_2 END) as matchwinner, win_type, win_margin 
+SELECT match_id, team1, team2, team_1, team_2, venue_name, city_name, (CASE WHEN match_winner=team1 THEN team_1 ELSE team_2 END) as matchwinner, win_type, win_margin 
 FROM (SELECT *, team.team_name AS team_2 FROM (SELECT *, team.team_name AS team_1 FROM team join match ON team.team_id = match.team1) 
 as x JOIN team ON team.team_id = x.team2) AS y NATURAL JOIN venue ORDER BY season_year DESC;
 
