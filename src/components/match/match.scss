@@ -162,3 +162,92 @@
     margin-left: 2%;
     margin-right: 2%;
 }
+.match-card{
+    position: relative;
+    left:50%;
+    transform: translate(-50%,0%);
+    width:75%;
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.5s;
+    box-shadow: 0 0 0 10px rgba(255,255,255,0.2);
+}
+.match-card h2{
+    width:100%;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+.match-details h4{
+    width:100%;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+.match-card:hover{
+    background: #fff;
+}
+.match-card:hover h2{
+    background: #ff0057;
+    color: #fff;
+}
+.team1{
+    width: 30%;
+    float: left;
+    padding: 10px 20px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.team2{
+    width: 30%;
+    float: left;
+    padding: 10px 20px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.team1 img,
+.team2 img{
+    width:100%;
+}
+.details{
+    width:40%;
+    float:left;
+    text-align: center;
+}
+h3.team-name{
+    padding: 15px 0 0;
+    margin-bottom: 20px;
+    text-align: right;
+}
+.team1 h3.team-name{
+    text-align: left;
+}
+.match-details{
+    position: relative;
+}
+.date{
+    margin: 20px 0 0;
+}
+.versus{
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 50px;
+    background: #e91e63;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    margin: 20px auto;
+}
+.match-details:after{
+    content: '';
+    position: absolute;
+    width:50%;
+    left:0;
+    background: green;
+}

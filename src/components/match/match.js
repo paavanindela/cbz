@@ -75,6 +75,7 @@ class Match extends React.Component {
 					MATCHES
 				</header>
 				<MatchList data={this.state.data} />
+				<p></p>
 				<ButtonGroup size="lg" className="mb-2" >
 					<Button onClick={() => this.getNext(-1)} variant="danger">
 						PREV

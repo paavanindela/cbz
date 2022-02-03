@@ -4531,11 +4531,6 @@
   "resolved" "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.9.tgz"
   "version" "4.2.9"
 
-"growly@^1.3.0":
-  "integrity" "sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE="
-  "resolved" "https://registry.npmjs.org/growly/-/growly-1.3.0.tgz"
-  "version" "1.3.0"
-
 "gud@^1.0.0":
   "integrity" "sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw=="
   "resolved" "https://registry.npmjs.org/gud/-/gud-1.0.0.tgz"
@@ -6052,18 +6047,6 @@
   "resolved" "https://registry.npmjs.org/node-int64/-/node-int64-0.4.0.tgz"
   "version" "0.4.0"
 
-"node-notifier@^8.0.1 || ^9.0.0 || ^10.0.0":
-  "integrity" "sha512-ZTqP90y1eyb2xAZTa7j4AlAayTwh6cL8mn0nlJhLDq8itXGnJUmQGYOnpaMUvqZVfGo0vhU7KZ3HtDW6CT2SiQ=="
-  "resolved" "https://registry.npmjs.org/node-notifier/-/node-notifier-10.0.0.tgz"
-  "version" "10.0.0"
-  dependencies:
-    "growly" "^1.3.0"
-    "is-wsl" "^2.2.0"
-    "semver" "^7.3.5"
-    "shellwords" "^0.1.1"
-    "uuid" "^8.3.2"
-    "which" "^2.0.2"
-
 "node-releases@^2.0.1":
   "integrity" "sha512-CqyzN6z7Q6aMeF/ktcMVTzhAHCEpf8SOarwpzpf8pNBY2k5/oM34UHldUwp8VKI7uxct2HxSRdJjBaZeESzcxA=="
   "resolved" "https://registry.npmjs.org/node-releases/-/node-releases-2.0.1.tgz"
@@ -7389,7 +7372,7 @@
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
 
-"reactstrap@^8.9.0":
+"reactstrap@^8.10.1":
   "integrity" "sha512-StjLADa/12yMNjafrSs+UD7sZAGtKpLO9fZp++2Dj0IzJinqY7eQhXlM3nFf0q40YsIcLvQdFc9pKF8PF4f0Qg=="
   "resolved" "https://registry.npmjs.org/reactstrap/-/reactstrap-8.10.1.tgz"
   "version" "8.10.1"
@@ -7862,11 +7845,6 @@
   "integrity" "sha512-Vpfqwm4EnqGdlsBFNmHhxhElJYrdfcxPThu+ryKS5J8L/fhAwLazFZtq+S+TWZ9ANj2piSQLGj6NQg+lKPmxrw=="
   "resolved" "https://registry.npmjs.org/shell-quote/-/shell-quote-1.7.3.tgz"
   "version" "1.7.3"
-
-"shellwords@^0.1.1":
-  "integrity" "sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww=="
-  "resolved" "https://registry.npmjs.org/shellwords/-/shellwords-0.1.1.tgz"
-  "version" "0.1.1"
 
 "side-channel@^1.0.4":
   "integrity" "sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw=="
@@ -8569,11 +8547,6 @@
   dependencies:
     "is-typedarray" "^1.0.0"
 
-"typescript@^3.2.1 || ^4", "typescript@>= 2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta":
-  "integrity" "sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA=="
-  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.5.5.tgz"
-  "version" "4.5.5"
-
 "unbox-primitive@^1.0.1":
   "integrity" "sha512-tZU/3NqK3dA5gpE1KtyiJUrEB0lxnGkMFHptJ7q6ewdZ8s12QrODwNbhIJStmJkd1QDXa1NRA8aF2A1zk/Ypyw=="
   "resolved" "https://registry.npmjs.org/unbox-primitive/-/unbox-primitive-1.0.1.tgz"
@@ -8940,7 +8913,7 @@
   dependencies:
     "isexe" "^2.0.0"
 
-"which@^2.0.1", "which@^2.0.2":
+"which@^2.0.1":
   "integrity" "sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA=="
   "resolved" "https://registry.npmjs.org/which/-/which-2.0.2.tgz"
   "version" "2.0.2"
