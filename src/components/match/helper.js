@@ -1,32 +1,32 @@
 import React from 'react';
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
 function TableRow(props) {
 	const id = props.id
 	const row = props.row
-	if(props.type==="1")
-	return (
-		<tr key={props.id}>
-			{row.map((val, idx) => {
-				if (idx == 0) {
-					return <td key={idx}><Link to={"/players/" + id}>{val}</Link></td>;
-				}
-				else {
-					return <td key={idx}>{val}</td>;
-				}
-			})}
-		</tr>
-	)
+	if (props.type === "1")
+		return (
+			<tr key={props.id}>
+				{row.map((val, idx) => {
+					if (idx === 0) {
+						return <td key={idx}><Link to={"/players/" + id}>{val}</Link></td>;
+					}
+					else {
+						return <td key={idx}>{val}</td>;
+					}
+				})}
+			</tr>
+		)
 	else
-	return (
-		<tr key={props.id}>
-			{row.map((val, idx) => {
-				return <td key={idx}>{val}</td>;
-			})}
-		</tr>
-	)
+		return (
+			<tr key={props.id}>
+				{row.map((val, idx) => {
+					return <td key={idx}>{val}</td>;
+				})}
+			</tr>
+		)
 }
 
 function CreateTable(props) {
@@ -40,12 +40,18 @@ function CreateTable(props) {
 		return entry[props.keyname]
 	})
 	// console.log(body)
-	return <Container>
-		<table className='hoverTable'>
-			<thead><tr>{headers.map((head, id) => <th key={id}>{head}</th>)}</tr></thead>
-			<tbody>{body.map((row, id) => <TableRow key={id} row={row} id={player_id[id]} type={"1"} />)}</tbody>
-		</table>
-	</Container>;
+	return <div className='ipl-table-wrapper' style={{width:"100%"}}>
+		<div className='table-section'>
+			<div>
+				<table className='ipl-table'>
+					<thead><tr className='head'>{headers.map((head, id) => <th key={id}>{head}</th>)}</tr></thead>
+					<tbody>
+						{body.map((row, id) => <TableRow key={id} row={row} id={player_id[id]} type={"1"} />)}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>;
 }
 
 function Extatot(props) {
@@ -73,4 +79,4 @@ function Mirow(props) {
 	</Row>
 }
 
-export {Mirow,Extatot,CreateTable,TableRow}
+export { Mirow, Extatot, CreateTable, TableRow }

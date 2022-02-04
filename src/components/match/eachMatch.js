@@ -21,22 +21,16 @@ function Component(props) {
 	if (index === 1) {
 		return (<div>
 			<h3 className='sub-title'>INNINGS 1 {data.total1.team_name}</h3>
-			<p></p>
 			<CreateTable headers={headers1} data={data.batting1} access={access1} keyname="striker" />
-			<p></p>
 			<Extatot total={data.total1} />
-			<p></p>
 			<CreateTable headers={headers2} data={data.bowling1} access={access2} keyname="bowler" />
 		</div>);
 	}
 	if (index === 2) {
 		return (<div>
 			<h3 className='sub-title'>INNINGS 2 {data.total2.team_name}</h3>
-			<p></p>
 			<CreateTable headers={headers1} data={data.batting2} access={access1} keyname="striker" />
-			<p></p>
 			<Extatot total={data.total2} />
-			<p></p>
 			<CreateTable headers={headers2} data={data.bowling2} access={access2} keyname="bowler" />
 		</div>);
 	}
