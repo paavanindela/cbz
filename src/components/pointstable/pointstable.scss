@@ -171,7 +171,7 @@
 //   }
   
   /* List element */
-  li {
+  .poili {
     counter-increment: index; 
     display: flex;
     align-items: center;
@@ -181,7 +181,7 @@
   
   
   /* Element counter */
-  li::before {
+  .poili::before {
     content: counters(index, ".", decimal-leading-zero);
     font-size: 1.5rem;
     text-align: right;
@@ -198,7 +198,7 @@
   
   
   /* Element separation */
-  li + li {
+  .poili + .poili {
     border-top: 1px solid rgba(255,255,255,0.2);
   }
   

@@ -11,7 +11,7 @@ const url = 'http://localhost:5000/pointstable/'
 function SelectYear(props){
 	
 	const rowList = props.data.map((val,idx) =>
-				<li>
+				<li className='poili'>
 					<a style={{ fontWeight: 'bold'}} href={'http://localhost:3000/pointstable/'+String(val.season_year)}>{val.season_year}</a>
 				</li>
 		);

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet, } from 'react-router-dom';
 import { withRouter } from '../withRouter';
 import MatchList from './matchlist';
-import bg from '../../assets/bg.jpg'
+// import bg from '../../assets/bg.jpg'
 
 const url = 'http://localhost:5000/matches/'
 

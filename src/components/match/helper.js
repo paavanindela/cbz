@@ -49,12 +49,22 @@ function CreateTable(props) {
 						{body.map((row, id) => <TableRow key={id} row={row} id={player_id[id]} type={"1"} />)}
 					</tbody>
 				</table>
+				<table className='ipl-table'>
+			<thead><tr className='head'>EXTRAS</tr></thead>
+			<tbody>1</tbody>
+		</table>
 			</div>
 		</div>
 	</div>;
 }
 
 function Extatot(props) {
+	return <div>
+		<table className='ipl-table'>
+			<thead><tr className='head'>EXTRAS</tr></thead>
+			<tbody>{props.total.extra}</tbody>
+		</table>
+	</div>;
 	return <Container>
 		<Row className="row-dark-1">
 			<Col className="col-dark-2">EXTRAS </Col>

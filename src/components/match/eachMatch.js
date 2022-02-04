@@ -20,7 +20,7 @@ function Component(props) {
 	let access2 = ["player_name", "balls", "runs", "wickets"];
 	if (index === 1) {
 		return (<div>
-			<h3 className='sub-title'>INNINGS 1 {data.total1.team_name}</h3>
+			<h3 className='sub-title'>{data.total1.team_name}</h3>
 			<CreateTable headers={headers1} data={data.batting1} access={access1} keyname="striker" />
 			<Extatot total={data.total1} />
 			<CreateTable headers={headers2} data={data.bowling1} access={access2} keyname="bowler" />
@@ -28,7 +28,7 @@ function Component(props) {
 	}
 	if (index === 2) {
 		return (<div>
-			<h3 className='sub-title'>INNINGS 2 {data.total2.team_name}</h3>
+			<h3 className='sub-title'>{data.total2.team_name}</h3>
 			<CreateTable headers={headers1} data={data.batting2} access={access1} keyname="striker" />
 			<Extatot total={data.total2} />
 			<CreateTable headers={headers2} data={data.bowling2} access={access2} keyname="bowler" />
@@ -36,8 +36,8 @@ function Component(props) {
 	}
 	if (index === 3) {
 		return (<div>
-			<h3 className='sub-title'>MATCH INFO</h3>
-			<p></p>
+			{/* <h3 className='sub-title'>MATCH INFO</h3>
+			<p></p> */}
 			<Container>
 				<Mirow name={"MATCH: " + data.info.id} data={data.info.team_1 + "  VS " + data.info.team_2 + "\n" + " in " + data.info.season_year} type="1" />
 				<Mirow name="TOSS" data={data.info.tosswinner + " elected to " + data.info.toss_name + " first"} type="2" />
@@ -60,14 +60,14 @@ function Component(props) {
 	}
 	if (index === 4) {
 		return (<div>
-			<h3 className='sub-title'>SCORE COMPARISION</h3>
-			<p></p>
+			
+			
 			<Compare matchId={props.matchId} />
 		</div>);
 	}
 	if (index === 5) {
 		return (<div>
-			<h3 className='sub-title'>SUMMARY</h3>
+			
 			<Summary matchId={props.matchId} />
 			<p></p>
 		</div>);
@@ -123,6 +123,7 @@ class rMatch extends React.Component {
 	}
 	render() {
 		let text = "";
+		let headList = ["Inning1","Inning2","MatchInfo","Comparison","Summary"]
 		if (this.state.loading === 0) text = "LOADING";
 		else if (this.state.loading === 1) text = "FAILED TO LOAD DATA";
 		else return (
@@ -130,15 +131,36 @@ class rMatch extends React.Component {
 				{/* <header className='title'>
 					Match: {this.state.matchId}
 				</header> */}
-				<ButtonGroup>
+				{/* <ButtonGroup>
 					<DropdownButton as={ButtonGroup} title="Scorecard" id="bg-nested-dropdown">
 						<Dropdown.Item eventKey="innings1" onClick={() => { this.changeComponent(1) }}>INNINGS 1</Dropdown.Item>
-						<Dropdown.Item eventKey="innings2" onClick={() => { this.changeComponent(2) }}>INNINGS 2</Dropdown.Item>
+						<Droown.Item eventKey="innings2" onClick={() => { this.changeComponent(2) }}>INNINGS 2</Dropdown.Item>
 						<Dropdown.Item eventKey="innings2" onClick={() => { this.changeComponent(3) }}>MATCH INFO</Dropdown.Item>
 					</DropdownButton>
 					<Button onClick={() => { this.changeComponent(4) }}>Score Comparison</Button>
 					<Button onClick={() => { this.changeComponent(5) }}>Summary</Button>
-				</ButtonGroup>
+				</ButtonGroup> */}
+			<nav>
+         <label class="logo">{headList[this.state.component-1]}</label>
+         <ul>
+            <li><a href="#" onClick = {()=> {this.changeComponent(3)}}>Match Info</a></li>
+            <li>
+               <a href="#scorecard">ScoreCard
+               <i class="fas fa-caret-down"></i>
+               </a>
+               <ul>
+                  <li><a href='#inning1' onClick = {()=> {this.changeComponent(1)}}>Inning1</a></li>
+                  <li><a href='#inning1' onClick = {()=> {this.changeComponent(2)}}>Inning2</a></li>
+               </ul>
+            </li>
+            <li>
+               <a href="#comparison" onClick = {()=>{this.changeComponent(4)}}>Score Comparison</a>
+               
+            </li>
+            <li><a href="#summary" onClick = {()=>{this.changeComponent(5)}}> Summary</a></li>
+            
+         </ul>
+      </nav>
 				<Component index={this.state.component} data={this.state.data} matchId={this.state.matchId} />
 				<p></p>
 				<Button variant="warning">

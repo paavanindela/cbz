@@ -42,11 +42,11 @@
 }
 
 .ipl-table-wrapper {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   padding: 2.5% 5%;
-  overflow: hidden;
-  position: relative;
+  /* overflow: hidden;
+  position: relative; */
 }
 .ipl-table-wrapper sup {
   margin-right: -0.45vw;
@@ -70,6 +70,7 @@
 }
 .ipl-table-wrapper .table-section > div {
   min-width: 48%;
+  
 }
 .ipl-table-wrapper .table-section > div .table-title {
   color: #232882;
