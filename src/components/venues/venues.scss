@@ -3,89 +3,16 @@
     @extend .container;
     width: 90%;
 }
-.container-dark-2{
-    @extend .container;
-    width: 90%;
-    background-color: aliceblue;
-}
 .row-dark-1{
     @extend .row;
-    background: rgb(41, 252, 153);
     color: rgb(0, 0, 0);
     font-size: 1.1rem;
     align-items: center;
     font-weight: 500;
     border: 1px solid rgb(0, 0, 0);
     font-family: 'Mochiy Pop P one', sans-serif;
-    :hover{
-        background-color: rgb(0, 0, 0);
-        color: rgb(41, 252, 153);
-    }
+    background-image: linear-gradient(0deg, #ff1e50 20%, #232882);
 };
-.row-dark-2{
-    @extend .row;
-    background: rgb(123, 238, 247);
-    color: rgb(0, 0, 0);
-    display: flex;
-    align-items: center;
-    place-content: flex-start;
-    font-size: 1rem;
-    font-weight: 500;
-    border: 1px solid rgb(0, 0, 0);
-    font-family: 'Mochiy Pop P one', sans-serif;
-    :hover{
-        background-color: rgb(0, 0, 0);
-        color:rgb(123, 238, 247);
-    }
-};
-.row-dark-3{
-    @extend .row;
-    background: rgb(253, 212, 159);
-    color: rgb(0, 0, 0);
-    display: flex;
-    align-items: center;
-    place-content: flex-end;
-    font-size: 1rem;
-    font-weight: 500;
-    border: 1px solid rgb(0, 0, 0);
-    font-family: 'Mochiy Pop P one', sans-serif;
-    :hover{
-        background-color: rgb(0, 0, 0);
-        color: rgb(253, 212, 159);
-    }
-};
-.row-dark-4{
-    @extend .row;
-    background: rgb(41, 252, 153);
-    color: rgb(0, 0, 0);
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 500;
-    border: 1px solid rgb(0, 0, 0);
-    font-family: 'Mochiy Pop P one', sans-serif;
-    :hover{
-        background-color: rgb(0, 0, 0);
-    }
-};
-.col-dark-1{
-    @extend .col;
-    display: flex;
-    align-items: center;
-    min-height: 70px;
-    border: 0.25px solid rgb(0, 0, 0);
-};
-.col-dark-2{
-    @extend .col;
-    display: flex;
-    align-items: center;
-    height: calc(100% - 100px);
-    border: 0.25px solid rgb(0, 0, 0);
-};
-.row-min{
-    @extend .row;
-    min-height: 20px;
-}
 .title{
     display: grid;
     place-items: center;

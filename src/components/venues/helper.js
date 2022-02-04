@@ -4,17 +4,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
 function Mirow(props) {
-	let classtype = "row-dark-2"
-	if (props.type === "1") classtype = "row-dark-1"
-	if (props.type === "2") classtype = "row-dark-2"
-	if (props.type === "3") classtype = "row-dark-3"
-	let coltype = "col-dark-1"
-	if (props.coltype === "1") coltype = "col-dark-1"
-	if (props.coltype === "2") coltype = "col-dark-2"
-	return <Row className={classtype}>
-		<Col className={coltype}>{props.name}</Col>
-		<Col className={coltype}>{props.data} </Col>
-	</Row>
+	if(props.type==="2")
+		return <tr className='head'>
+			<td>{props.name}</td>
+			<td>{props.data}</td>
+		</tr>;
+	else 
+		return <tr>
+			<td>{props.name}</td>
+			<td>{props.data}</td>
+		</tr>;
 }
 
-export {Mirow}
+function Xrow(props){
+	return [
+		<tr className='head'>
+			{props.headers.map((entry,idx)=> <td key={idx}>{entry}</td>)}
+		</tr>,
+		<tr>
+			{props.access.map((entry,idx)=> <td key={idx}>{props.data[entry]}</td>)}
+		</tr>
+	];
+}
+
+export {Mirow,Xrow}

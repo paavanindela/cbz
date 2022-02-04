@@ -25,7 +25,7 @@ function FiScore(props) {
     return (
         
         <Container className='container-dark'>
-            <div className='row-dark-1'>
+            <div className='match-card row-dark-1'>
                 <Col></Col>
                 <Chart 
                     height="500px"

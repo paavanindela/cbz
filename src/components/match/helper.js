@@ -40,7 +40,7 @@ function CreateTable(props) {
 		return entry[props.keyname]
 	})
 	// console.log(body)
-	return <div className='ipl-table-wrapper' style={{width:"100%"}}>
+	return <div className='ipl-table-wrapper' style={{ width: "100%" }}>
 		<div className='table-section'>
 			<div>
 				<table className='ipl-table'>
@@ -50,43 +50,25 @@ function CreateTable(props) {
 					</tbody>
 				</table>
 				<table className='ipl-table'>
-			<thead><tr className='head'>EXTRAS</tr></thead>
-			<tbody>1</tbody>
-		</table>
+					<thead><tr className='head'><th>{props.nt}</th></tr></thead>
+					<tbody><td>{props.value}</td></tbody>
+				</table>
 			</div>
 		</div>
 	</div>;
 }
 
-function Extatot(props) {
-	return <div>
-		<table className='ipl-table'>
-			<thead><tr className='head'>EXTRAS</tr></thead>
-			<tbody>{props.total.extra}</tbody>
-		</table>
-	</div>;
-	return <Container>
-		<Row className="row-dark-1">
-			<Col className="col-dark-2">EXTRAS </Col>
-			<Col className="col-dark-2">{props.total.extra} </Col>
-		</Row>
-		<Row className="row-dark-1">
-			<Col className="col-dark-2">TOTAL </Col>
-			<Col className="col-dark-2"> RUNS: {props.total.total} </Col>
-			<Col className="col-dark-2"> WICKETS: {props.total.wickets} </Col>
-		</Row>
-	</Container>;
-}
-
 function Mirow(props) {
-	let classtype = "row-dark-2"
-	if (props.type === "1") classtype = "row-dark-1"
-	if (props.type === "2") classtype = "row-dark-2"
-	if (props.type === "3") classtype = "row-dark-3"
-	return <Row className={classtype}>
-		<Col className="col-dark-1">{props.name}</Col>
-		<Col className="col-dark-1">{props.data} </Col>
-	</Row>
+	if(props.type==="2")
+		return <tr className='head'>
+			<td>{props.name}</td>
+			<td>{props.data}</td>
+		</tr>;
+	else 
+		return <tr>
+			<td>{props.name}</td>
+			<td>{props.data}</td>
+		</tr>;
 }
 
-export { Mirow, Extatot, CreateTable, TableRow }
+export { Mirow, CreateTable, TableRow }
