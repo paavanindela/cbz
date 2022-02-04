@@ -284,12 +284,12 @@ SUM(CASE WHEN wickets>=5 THEN 1 ELSE 0 END) as fiveWicket FROM bowling_card GROU
 AS x NATURAL JOIN (SELECT bowler, SUM(CASE WHEN ball_id<7 THEN 1 ELSE 0 END)*1.0/6 AS overs FROM ball_by_ball group by (bowler)) AS y; 
 
 CREATE VIEW nrr AS
-SELECT t1.id, t1.team_name, t1.team_id, ROUND(t1.total*1.0/t1.over - t2.total*1.0/t2.over,2) net from total as t1 join total as t2 on t1.id=t2.id AND t1.inning <> t2.inning; 
+SELECT t1.id, t1.team_name, t1.team_id, t1.total as run1, t2.total as run2, t1.over as over1, t2.over as over2   from total as t1 join total as t2 on t1.id=t2.id AND t1.inning <> t2.inning; 
 
 CREATE VIEW points_table AS
 SELECT *,  matches-nr-tie-wins AS lose, 2*wins+nr+tie AS points FROM(
 SELECT season_year, team_name, COUNT(*) AS matches, SUM(CASE WHEN team_id=match_winner THEN 1 ELSE 0 END) AS wins, SUM(CASE WHEN win_type='tie' THEN 1 ELSE 0 END) AS tie, SUM(CASE WHEN win_type='nr' THEN 1 ELSE 0 END) 
-AS nr,  sum(net) AS netrr  FROM match join nrr on id=match_id group by (season_year, team_id, team_name)) AS x ORDER BY points desc, netrr desc;
+AS nr,  Round(sum(run1)/sum(over1) - sum(run2)/sum(over2),2) AS netrr  FROM match join nrr on id=match_id group by (season_year, team_id, team_name)) AS x ORDER BY points desc, netrr desc;
 
 CREATE VIEW venue_view AS
 SELECT venue.venue_id, venue_name, city_name, country_name, capacity, count(*)/2 AS matches, MAX(total) AS highest, MIN(total) AS lowest, 
