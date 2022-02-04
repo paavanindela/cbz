@@ -1,7 +1,9 @@
 .App {
   text-align: center;
-  background-color: rgb(247, 214, 213);
+  /* background-color: rgb(247, 214, 213); */
   min-height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
 .App-logo {
@@ -49,17 +51,18 @@
 .ipl-table-wrapper sup {
   margin-right: -0.45vw;
 }
- /* .ipl-table-wrapper:after {
+ .App:after {
      content: "";
      position: absolute;
-     width: 150%;
-     height: 100%;
+     width: 100%;
+     height: 300%;
     background-image: linear-gradient(60deg, rgba(35, 40, 130, 0.5) 20%, rgba(255, 30, 80, 1));
      border-radius: 0% 5000px 5000px 0%;
      top: 50%;
-     z-index: 1;
-    transform: translate(-25%, -40%) rotate(-45deg);
- } */
+     z-index: -1;
+    transform: translate(-50%,-50%) rotate(45deg);
+    flex-grow: inherit;
+ }
 .ipl-table-wrapper .table-section {
   display: flex;
   justify-content: space-around;
@@ -136,10 +139,10 @@
 .ipl-table-wrapper .table-section > div .ipl-table tbody tr.head td {
   font-size: 1.25vw;
 }
-.ipl-table-wrapper .footer-section {
+.App .footer-section {
   z-index: 2;
 }
-.ipl-table-wrapper .footer-section .ipl-table-footer {
+.App .footer-section .ipl-table-footer {
   color: #232882;
   font-weight: bold;
   background-color: #fff;
