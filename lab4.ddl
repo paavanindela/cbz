@@ -233,7 +233,7 @@ SELECT bb.match_id as id, innings_no as inning, team_id, team_name, SUM(runs_sco
 natural join team GROUP BY (bb.match_id, inning, team_id, team_name);
 
 CREATE VIEW bowling_card AS
-select match_id,innings_no,bowler,player_name, balls, runs, wickets, over + (case when maxb>.5 then 1 else maxb end) as over from (SELECT match_id, innings_no, bowler,  COUNT(*) AS balls, SUM(extra_runs+runs_scored) as runs, COUNT(distinct over_id)-1 as over,MAX(over_id+0.1*ball_id)%1 as maxb, SUM(CASE WHEN out_type IS NULL 
+select match_id,innings_no,bowler,player_name, balls, runs, wickets, over + (case when maxb>.5 then 1 else maxb end) as over from (SELECT match_id, innings_no, bowler,  COUNT(*) AS balls, SUM(runs_scored) as runs, COUNT(distinct over_id)-1 as over,MAX(over_id+0.1*ball_id)%1 as maxb, SUM(CASE WHEN out_type IS NULL 
 OR out_type in ('run out','retired hurt') THEN 0 ELSE 1 END) AS wickets from ball_by_ball 
 group by (match_id, innings_no, bowler)) AS x join player on bowler=player.player_id;
 
