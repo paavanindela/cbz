@@ -219,10 +219,13 @@ as x JOIN team ON team.team_id = x.team2) AS y NATURAL JOIN venue ORDER BY seaso
 CREATE VIEW batting_scorecard AS
 -- SELECT b.match_id AS id, b.innings_no AS inning, b.striker as pid, p1.player_name as batter, (CASE WHEN out_type in ('run out', 'retired hurt') THEN NULL ELSE p2.player_name END) as bowler,
 --  out_type, runs, balls, fours, sixes, ROUND((runs*100.0)/balls, 2) AS sr FROM((
-SELECT match_id, innings_no, striker, runs, balls, fours, sixes, player_name FROM(
+/* SELECT match_id, innings_no, striker, runs, balls, fours, sixes, player_name FROM( */
+ SELECT match_id, innings_no, striker, sum(runs) as runs, sum(balls) as balls, sum(fours) as fours, sum(sixes) as sixes,player_name  FROM  (
+ SELECT match_id, innings_no, non_striker AS striker, 0 as runs, 0 as balls, 0 as fours, 0 as sixes, MIN(over_id+0.1*ball_id) AS minover from ball_by_ball GROUP BY (match_id, innings_no, non_striker) UNION    
 (SELECT match_id, innings_no, striker, SUM(runs_scored) as runs, COUNT(*) as balls, SUM(CASE WHEN runs_scored=4 THEN 1 ELSE 0 END) as fours, 
-SUM(CASE WHEN runs_scored=6 THEN 1 ELSE 0 END) as sixes, MIN(over_id) AS minover from ball_by_ball GROUP BY (match_id, innings_no, striker)) 
-AS x join player on player_id=striker) AS y order by minover;
+SUM(CASE WHEN runs_scored=6 THEN 1 ELSE 0 END) as sixes, MIN(over_id+0.1*ball_id) AS minover from ball_by_ball GROUP BY (match_id, innings_no, striker)) )
+AS x join player on player_id=striker group by(match_id, innings_no, striker, player_name) order by min(minover);
+/* ) AS y order by minover; */
 -- , MIN(over_id) AS minover, MIN(ball_id) as minball from ball_by_ball GROUP BY (match_id, innings_no, striker) ) AS b LEFT JOIN 
 -- (SELECT * FROM ball_by_ball WHERE out_type IS NOT NULL) AS x on b.match_id = x.match_id AND b.striker=x.striker JOIN player as p1 
 -- on p1.player_id=b.striker LEFT JOIN player as p2 on p2.player_id = x.bowler) order by minover, minball;
@@ -274,8 +277,8 @@ NATURAL JOIN match_summary );
 CREATE VIEW batting_stats AS
 SELECT * FROM
 (SELECT striker, player_name, COUNT(*) AS matches, SUM(runs) AS runs, SUM(fours) as fours, SUM(sixes) AS sixes, MAX(runs) AS highscore, 
-SUM(CASE WHEN runs>=50 THEN 1 ELSE 0 END) as fifty, ROUND((SUM(runs)*100.0)/SUM(balls),2) AS sr FROM batting_scorecard GROUP BY (striker, player_name))
-AS x NATURAL JOIN (SELECT striker, ROUND((sum(runs_scored)*1.0)/count(out_type),2) AS average FROM ball_by_ball group by striker) AS y; 
+SUM(CASE WHEN runs>=50 AND runs<100 THEN 1 ELSE 0 END) as fifty, ROUND((SUM(runs)*100.0)/SUM(balls),2) AS sr FROM batting_scorecard GROUP BY (striker, player_name))
+AS x NATURAL JOIN (SELECT striker, ROUND((sum(runs_scored)*1.0)/(CASE WHEN count(out_type)=0 THEN 1 ELSE count(out_type) END),2) AS average FROM ball_by_ball group by striker) GROUP BY (striker)) AS z; 
 
 CREATE VIEW bowling_stats AS
 SELECT *, ROUND(runs*1.0/overs,2) AS economy FROM
@@ -293,7 +296,7 @@ AS nr,  Round(sum(run1)/sum(over1) - sum(run2)/sum(over2),2) AS netrr  FROM matc
 
 CREATE VIEW venue_view AS
 SELECT venue.venue_id, venue_name, city_name, country_name, capacity, count(*)/2 AS matches, MAX(total) AS highest, MIN(total) AS lowest, 
-MAX(CASE WHEN inning=2 AND team_id = match_winner THEN total ELSE 0 END), SUM(CASE WHEN win_type='runs' THEN 1 ELSE 0 END)/2 AS battingwin,
+MAX(CASE WHEN inning=1 AND team_id <> match_winner THEN total+1 ELSE 0 END), SUM(CASE WHEN win_type='runs' THEN 1 ELSE 0 END)/2 AS battingwin,
 SUM(CASE WHEN win_type='wickets' THEN 1 ELSE 0 END)/2 AS bowlingwin, SUM(CASE WHEN win_type in ('runs', 'wickets') THEN 0 ELSE 1 END)/2 AS draw   
 from venue left join match on match.venue_id=venue.venue_id left join total on id=match_id group by venue.venue_id;
 
