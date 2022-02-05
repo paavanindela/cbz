@@ -120,8 +120,8 @@ class rvenue extends React.Component {
                     <p></p>
                     <Component index={this.state.component} data={this.state.data} graph={this.state.graph} />
                     <p></p>
-                    <Button variant="warning">
-                        <Link to={"/venues"} style={{ textDecoration: "none" }}>
+                    <Button variant="success">
+                        <Link to={"/venues"} style={{ textDecoration: "none", color:'inherit'}}>
                             Back
                         </Link>
                     </Button>

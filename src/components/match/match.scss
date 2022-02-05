@@ -108,6 +108,11 @@ nav .logo{
     float: right;
     margin-right: 30px;
   }
+  @media only screen and (max-width: 1250px) {
+    .fadeshow1 {
+        display: none;
+    }
+}
   nav ul li{
     display: inline-block;
     list-style-type: none;
@@ -146,19 +151,13 @@ nav .logo{
     position: relative;
     border: 1px solid #042331;
     border-top: none;
+    z-index: inherit;
   }
   nav ul ul li a{
     line-height: 50px;
   }
-  nav ul ul ul{
-    border-top: none;
-  }
-  nav ul ul ul li{
-    position: relative;
-    top: -70px;
-    left: 150px;
-  }
+ 
   nav ul ul li a i{
-    margin-left: 45px;
+    margin-left:5px;
   }
   

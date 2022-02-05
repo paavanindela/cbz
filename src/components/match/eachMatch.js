@@ -157,7 +157,7 @@ class rMatch extends React.Component {
 			<div className='App'>
 				<nav>
 					<label class="logo">{headList[this.state.component - 1]}</label>
-					<ul>
+					<ul className='fadeshow1'>
 						<li><a href="#" onClick={() => { this.changeComponent(3) }}>Match Info</a></li>
 						<li>
 							<a href="#scorecard">ScoreCard
@@ -176,8 +176,8 @@ class rMatch extends React.Component {
 				</nav>
 				<Component index={this.state.component} data={this.state.data} matchId={this.state.matchId} />
 				<p></p>
-				<Button variant="warning">
-					<Link to={"/matches"} style={{ textDecoration: "none" }}>
+				<Button variant="success">
+					<Link to={"/matches"} style={{ textDecoration: "none", color:'inherit' }}>
 						Back
 					</Link>
 				</Button>

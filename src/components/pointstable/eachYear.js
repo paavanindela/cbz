@@ -67,11 +67,11 @@ class rYear extends React.Component {
                         data={data}
                         access={['team_name','matches','wins','lose','tie','netrr','points']} />
                     <p></p>
-                    <Button variant="warning">
-                        <Link to={"/pointstable"} style={{ textDecoration: "none" }}>
+                    <button className='btn btn-success'>
+                        <Link to={"/pointstable"} style={{ textDecoration: "none",color:'inherit'} }>
                             Back
                         </Link>
-                    </Button>
+                    </button>
                 </div>
             );
         }

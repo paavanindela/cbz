@@ -4,6 +4,7 @@ import { BsFillPeopleFill, BsFillPlayCircleFill, BsTable } from 'react-icons/bs'
 import { MdSportsCricket } from 'react-icons/md';
 import './layout.scss';
 
+
 const sidebarNavItems = [
   {
     display: 'Matches',
@@ -81,7 +82,12 @@ const Layout = (props) => {
             </Link>
           ))
         }
+      
+        <div className="credit"><a href="https://www.facebook.com/MSDhoni">Credits: MS Dhoni</a>
+      
+        </div>
       </div>
+
     </div>
     <Outlet />
   </div>;
