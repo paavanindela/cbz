@@ -5,7 +5,6 @@ import { withRouter } from '../withRouter';
 import { Outlet, Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import styles from './venues.scss';
-import Create from './create';
 const url = 'http://localhost:5000/venue/'
 
 function SelectVenue(props) {
@@ -17,19 +16,17 @@ function SelectVenue(props) {
 			style={{
 				textDecoration: "none",
 			}}
-			className="card">{val.venue_name}
+			className="card"
+			key={idx}>{val.venue_name}
 		</Link>
 	);
-	console.log(index);
+	// console.log(index);
 	if (index === 1) {
 		return (<ul
 			className='card-list'>
 			{rowList}
 		</ul>
 		);
-	}
-	if (index === 2) {
-		return (<Create />);
 	}
 	return <div></div>;
 }
@@ -101,8 +98,12 @@ class Venues extends React.Component {
 				</header>
 				{this.state.component == 1 ?
 					(
-						<button className="btn btn-success" style={{ marginTop: -20, marginBottom: 10 }} onClick={() => { this.changeComponent(2) }}>Create New Venue</button>
-
+						<button className="btn btn-success" style={{ marginTop: -20, marginBottom: 10 }}>
+							<Link to="/venues/add" 
+								style={{color:"inherit"}}>
+							Create New Venue
+							</Link>
+						</button>
 					) : <></>
 				}
 				<SelectVenue index={this.state.component} data={this.state.data} />
