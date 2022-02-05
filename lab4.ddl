@@ -278,7 +278,7 @@ CREATE VIEW batting_stats AS
 SELECT * FROM
 (SELECT striker, player_name, COUNT(*) AS matches, SUM(runs) AS runs, SUM(fours) as fours, SUM(sixes) AS sixes, MAX(runs) AS highscore, 
 SUM(CASE WHEN runs>=50 AND runs<100 THEN 1 ELSE 0 END) as fifty, ROUND((SUM(runs)*100.0)/SUM(balls),2) AS sr FROM batting_scorecard GROUP BY (striker, player_name))
-AS x NATURAL JOIN (SELECT striker, ROUND((sum(runs_scored)*1.0)/(CASE WHEN count(out_type)=0 THEN 1 ELSE count(out_type) END),2) AS average FROM ball_by_ball group by striker); 
+AS x NATURAL JOIN (SELECT striker, ROUND((sum(runs_scored)*1.0)/(CASE WHEN count(out_type)=0 THEN 1 ELSE count(out_type) END),2) AS average FROM ball_by_ball group by striker) AS z; 
 
 CREATE VIEW bowling_stats AS
 SELECT *, ROUND(runs*1.0/overs,2) AS economy FROM
