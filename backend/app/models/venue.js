@@ -28,15 +28,25 @@ async function getOne(id) {
 
   async function post(body) {
     const {name, city, country, capacity} = body; 
-    const data = await pool.query(
+    
+    let success=true;
+    try{
+      const data = await pool.query(
         "INSERT INTO venue (venue_name, city_name, country_name, capacity) values($1,$2,$3,$4) RETURNING *"
         , [name, city, country, capacity]
     );
-    
-    
-    return {
-      'data':data.rows[0]
+      return {
+        'data': data[0],
+        'success': true
+      }
     }
+    catch (e){
+      return {
+        'error': e.message,
+        'success': false
+      }
+    }
+    
   }
 
 module.exports = {

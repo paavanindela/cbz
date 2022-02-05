@@ -64,7 +64,7 @@ CREATE TABLE venue (
     venue_name TEXT,
     city_name TEXT,
     country_name TEXT,
-    capacity INT,
+    capacity INT CHECK(capacity > 0),
     Primary Key(venue_id)
 );
 

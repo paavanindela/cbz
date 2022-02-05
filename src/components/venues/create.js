@@ -28,19 +28,30 @@ class rCreate extends React.Component {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(this.state)
+            }).then(response =>{
+                if(response.status===200){
+
+                    return response.json()
+                    
+                }
+                else{
+                    alert("venue not added" );
+                }
+            }).then(rdata =>{
+                if(rdata.success){
+                    alert("venue " + this.state.name + " added succesfully" );
+                        this.setState({
+                            name:'',
+                            city:'',
+                            capacity:'',
+                            country:''
+                        })
+                }
+                else {
+                    alert(rdata.error)
+                }
             });
-            if(response.status===200){
-                alert("venue " + this.state.name + " added succesfully" );
-                this.setState({
-                    name:'',
-                    city:'',
-                    capacity:'',
-                    country:''
-                })
-            }
-            else{
-                alert("venue not added" );
-            }
+            
         }
         catch (err) {
             console.error(err.message)
