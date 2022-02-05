@@ -10,35 +10,43 @@ import FiScore from './fiScore';
 const url = 'http://localhost:5000/venue/'
 
 function Component(props) {
-	const index = props.index;
-	const data = props.data;
-	// console.log(index);
-	// 1 - basic 2 - outline 3 - F avg
-	if (index === 1) {
-		return (<div>
-            <Container className='container-dark'>
-                <h3 className='sub-title'> BASIC INFORMATION</h3>
-                <Mirow name={"VENUE NAME"} data={data.venue_name} type="1" />
-                <Mirow name="ADDRESS" data={data.city_name + "," + data.country_name} type="2" />
-                <Mirow name="CAPACITY" data={data.capacity} type="3" />
-                <Mirow name="TOTAL MATCHES PLAYED" data={data.matches} type="1" />
-                <Mirow name="HIGHEST SCORE RECORDED" data={data.highest} type="2" />
-                <Mirow name="LOWEST SCORE RECORDED" data={data.lowest} type="3" />
-                <Mirow name="HIGHEST SCORE CHASED" data={data.max} type="1" />
-            </Container>
-		</div>);
-	}
-	if (index === 2) {
-		return (<div>
-			<Outline data={data}/>
-		</div>);
-	}
-	if (index === 3) {
-		return (<div>
-			<FiScore graph={props.graph}/>
-		</div>);
-	}
-	return <div></div>;
+    const index = props.index;
+    const data = props.data;
+    // console.log(index);
+    // 1 - basic 2 - outline 3 - F avg
+    if (index === 1) {
+        return (<div className='ipl-table-wrapper' style={{ width: "100%" }}>
+            <div className='table-section'>
+                <div>
+                    <table className='ipl-table'>
+                        <tbody>
+                            <tr className='head'>
+                                <td colSpan="2">Basic Information</td>
+                            </tr>
+                            <Mirow name={"VENUE NAME"} data={data.venue_name} type="1" />
+                            <Mirow name="ADDRESS" data={data.city_name + "," + data.country_name} type="1" />
+                            <Mirow name="CAPACITY" data={data.capacity} type="1" />
+                            <Mirow name="TOTAL MATCHES PLAYED" data={data.matches} type="1" />
+                            <Mirow name="HIGHEST SCORE RECORDED" data={data.highest} type="1" />
+                            <Mirow name="LOWEST SCORE RECORDED" data={data.lowest} type="1" />
+                            <Mirow name="HIGHEST SCORE CHASED" data={data.max} type="1" />
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>);
+    }
+    if (index === 2) {
+        return (<div>
+            <Outline data={data} />
+        </div>);
+    }
+    if (index === 3) {
+        return (<div>
+            <FiScore graph={props.graph} />
+        </div>);
+    }
+    return <div></div>;
 }
 
 class rvenue extends React.Component {
@@ -79,7 +87,7 @@ class rvenue extends React.Component {
                 return response.json();
             })
             .then(rdata => {
-                
+
                 this.setState({
 
                     data: rdata.data,
@@ -117,7 +125,7 @@ class rvenue extends React.Component {
                             Back
                         </Link>
                     </Button>
-                    
+
                 </div>
             );
         }

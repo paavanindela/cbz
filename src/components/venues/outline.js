@@ -18,24 +18,24 @@ function Outline(props) {
         ["Team bowling First Victories", Number(props.data.bowlingwin)],
         ["Draw", Number(props.data.draw)],
     ];
-    if(props.data.matches > 0)
-    return (
-        <Container className='container-dark'>
-            <div className='row-dark-1'>
-                <Col></Col>
-                <Chart 
-                    height="500px"
-                    width="500px"
-                    chartType="PieChart"
-                    loader={<div>Loading Chart</div>}
-                    data={pieData}
-                    options={pieOptions}
-                    title={"OUTLINE"}
-                />
-                <Col></Col>
-            </div>
-        </Container>
-    );
+    if (props.data.matches > 0)
+        return (
+            <Container className='container-dark'>
+                <div className='match-card row-dark-1'>
+                    <Col></Col>
+                    <Chart
+                        height="500px"
+                        width="500px"
+                        chartType="PieChart"
+                        loader={<div>Loading Chart</div>}
+                        data={pieData}
+                        options={pieOptions}
+                        title={"OUTLINE"}
+                    />
+                    <Col></Col>
+                </div>
+            </Container>
+        );
     return <h2>No Data</h2>
 }
 

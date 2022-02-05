@@ -6,6 +6,16 @@
     @extend .container;
     width: 90%;
 }
+.row-dark-1{
+  @extend .row;
+  color: rgb(0, 0, 0);
+  font-size: 1.1rem;
+  align-items: center;
+  font-weight: 500;
+  border: 1px solid rgb(0, 0, 0);
+  font-family: 'Mochiy Pop P one', sans-serif;
+  background-image: linear-gradient(0deg, #ff1e50 20%, #232882);
+};
 .title{
     display: grid;
     place-items: center;
@@ -82,104 +92,6 @@
     margin-left: 2%;
     margin-right: 2%;
 }
-.match-card{
-    position: relative;
-    left:50%;
-    transform: translate(-50%,0%);
-    background: rgba(255,255,255,0.5);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: 0.5s;
-    box-shadow: 0 0 0 10px rgba(255,255,255,0.2);
-    color: #000000;
-}
-.match-card h2{
-    width:100%;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-    box-sizing: border-box;
-    transition: 0.5s;
-}
-.match-card h5{
-    width:100%;
-    margin: 0;
-    padding: 20px;
-    float: left;
-    text-align: center;
-    box-sizing: border-box;
-    transition: 0.5s;
-    background: #faf38e;
-}
-.match-card:hover{
-    background: #fff;
-}
-.match-card h2{
-    background: #393464;
-    color: #fff;
-}
-.match-card:hover h2{
-    background: #050031;
-    color: #fff;
-}
-.match-card:hover h5{
-    background: #ffee00;
-    color: rgb(0, 0, 0);
-}
-.team1{
-    width: 35%;
-    float: left;
-    padding: 10px 20px 0px 20px;
-    box-sizing: border-box;
-    text-align: center;
-}
-.team2{
-    width: 35%;
-    float: left;
-    padding: 10px 20px 0px 20px;
-    box-sizing: border-box;
-    text-align: center;
-}
-.team1 img,
-.team2 img{
-    width:75px;
-    min-height: 75px;
-}
-.details{
-    width:30%;
-    float:left;
-    text-align: center;
-}
-h4.team-name{
-    padding: 15px 0 0;
-    margin-bottom: 20px;
-    text-align: center;
-}
-.match-details{
-    position: relative;
-}
-.date{
-    margin: 20px 0 0;
-}
-.versus{
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    border-radius: 50px;
-    background: #e91e63;
-    color: #fff;
-    text-align: center;
-    line-height: 50px;
-    margin: 20px auto;
-}
-.match-details:after{
-    content: '';
-    position: absolute;
-    width:50%;
-    left:0;
-    background: green;
-}
-
 nav .logo{
     color: white;
     font-size: 33px;
@@ -219,6 +131,8 @@ nav .logo{
     border-top: 3px solid #23dbdb;
     opacity: 0;
     visibility: hidden;
+    z-index: 10;
+
   }
   nav ul li:hover > ul{
     top: 70px;
@@ -232,7 +146,6 @@ nav .logo{
     position: relative;
     border: 1px solid #042331;
     border-top: none;
-    z-index: 10;
   }
   nav ul ul li a{
     line-height: 50px;

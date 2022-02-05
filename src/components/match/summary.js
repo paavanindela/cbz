@@ -135,61 +135,65 @@ class Summary extends React.Component {
 			return (
 				<div>
 					{/* <div className='container-dark'> */}
-						<div className='ipl-table-wrapper'>
-							<div class="footer-section">
-								<div class="ipl-table-footer">
-									MATCH ID: {this.state.matchId}, IPL, {this.state.data.season_year}
-								</div>
-							</div>
-							<div className='table-section'>
-								<ISummary
-									bdata={this.state.data.batting1}
-									wdata={this.state.data.bowling1}
-									team={this.state.data.summary.team_name1}
-									total={this.state.data.total1}// TODO: add overs
-								/>
-								<ISummary
-									bdata={this.state.data.batting2}
-									wdata={this.state.data.bowling2}
-									team={this.state.data.summary.team_name2}
-									total={this.state.data.total2}// TODO: add overs
-								/>
-							</div>
-							<div class="footer-section">
-								<div class="ipl-table-footer">
-									{this.state.data.summary.matchwinner} won by {this.state.data.summary.win_margin} {this.state.data.summary.win_type}
-								</div>
+					<div className='ipl-table-wrapper'>
+						<div class="footer-section">
+							<div class="ipl-table-footer">
+								MATCH ID: {this.state.matchId}, IPL, {this.state.data.season_year}
 							</div>
 						</div>
-					{/* </div> */}
-					<div className="lr">
-						<Row className='row-dark-4'>
-							<Col className='col-dark-1'>
-								<Chart
-									width={'600px'}
-									height={'320px'}
-									chartType="PieChart"
-									loader={<div>Loading Chart</div>}
-									data={this.state.pieData1}
-									options={this.state.pieOptions1}
-									rootProps={{ 'data-testid': '3' }}
-									title={this.state.data.summary.team_1}
-								/>
-							</Col>
-							<Col></Col>
-							<Col className='col-dark-1'>
-								<Chart
-									width={'600px'}
-									height={'320px'}
-									chartType="PieChart"
-									loader={<div>Loading Chart</div>}
-									data={this.state.pieData2}
-									options={this.state.pieOptions2}
-									rootProps={{ 'data-testid': '3' }}
-								/>
-							</Col>
-						</Row>
+						<div className='table-section'>
+							<ISummary
+								bdata={this.state.data.batting1}
+								wdata={this.state.data.bowling1}
+								team={this.state.data.summary.team_name1}
+								total={this.state.data.total1}// TODO: add overs
+							/>
+							<ISummary
+								bdata={this.state.data.batting2}
+								wdata={this.state.data.bowling2}
+								team={this.state.data.summary.team_name2}
+								total={this.state.data.total2}// TODO: add overs
+							/>
+						</div>
+						<div class="footer-section">
+							<div class="ipl-table-footer">
+								{this.state.data.summary.matchwinner} won by {this.state.data.summary.win_margin} {this.state.data.summary.win_type}
+							</div>
+						</div>
 					</div>
+					{/* </div> */}
+					<Container className='container-dark'>
+						<div className='match-card row-dark-1'>
+							<Col></Col>
+							<Chart
+								width={'600px'}
+								height={'320px'}
+								chartType="PieChart"
+								loader={<div>Loading Chart</div>}
+								data={this.state.pieData1}
+								options={this.state.pieOptions1}
+								rootProps={{ 'data-testid': '3' }}
+								title={this.state.data.summary.team_1}
+							/>
+							<Col></Col>
+						</div>
+					</Container>
+					<p></p>
+					<Container className='container-dark'>
+						<div className='match-card row-dark-1'>
+							<Col></Col>
+							<Chart
+								width={'600px'}
+								height={'320px'}
+								chartType="PieChart"
+								loader={<div>Loading Chart</div>}
+								data={this.state.pieData2}
+								options={this.state.pieOptions2}
+								rootProps={{ 'data-testid': '3' }}
+							/>
+							<Col></Col>
+						</div>
+					</Container>
 				</div>
 			);
 		}

@@ -56,7 +56,7 @@ function Bowling(props) {
         },
     ]
     // console.log(plotData)
-    return <Container className='container-dark-2'><Chart options={options}
+    return <Container className='container-dark-1'><Chart options={options}
         series={series} /></Container>;
 }
 

@@ -11,15 +11,18 @@ const url = 'http://localhost:5000/pointstable/'
 function SelectYear(props){
 	
 	const rowList = props.data.map((val,idx) =>
-				<li className='poili'>
-					<a style={{ fontWeight: 'bold'}} href={'http://localhost:3000/pointstable/'+String(val.season_year)}>{val.season_year}</a>
-				</li>
+			<Link 
+				to={'/pointstable/'+String(val.season_year)}
+				style={{textDecoration:"none"}}
+				className="card">
+					{val.season_year}
+			</Link>
 		);
 	return <Container className='container-dark'>
-		<h3 className='sub-title'>
+		<h3 className='title'>
 			CHOOSE YEAR
 		</h3>
-		<ul> 
+		<ul className='card-list'> 
 		{rowList}
 		</ul>
 	</Container>
