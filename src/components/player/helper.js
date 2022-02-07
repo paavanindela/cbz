@@ -17,14 +17,27 @@ function Mirow(props) {
 }
 
 function Xrow(props){
-	return [
-		<tr className='head'>
-			{props.headers.map((entry,idx)=> <td key={idx}>{entry}</td>)}
-		</tr>,
-		<tr>
-			{props.access.map((entry,idx)=> <td key={idx}>{props.data[entry]}</td>)}
-		</tr>
-	];
+	if(props.hasOwnProperty("access"))
+		return [
+			<tr className='head'>
+				{props.headers.map((entry,idx)=> <td key={idx}>{entry}</td>)}
+			</tr>,
+			<tr>
+				{props.access.map((entry,idx)=> <td key={idx}>{props.data[entry]}</td>)}
+			</tr>
+		];
+	else
+		return [
+			<tr className='head'>
+				{props.headers.map((entry,idx)=> <td key={idx}>{entry}</td>)}
+			</tr>,
+			<tr>
+				{props.headers.map((entry,idx)=> { 
+					if(idx===0) return <td key={idx}>{props.name}</td>
+					return <td key={idx}>0</td>}
+				)}
+			</tr>,
+		]
 }
 
 export {Mirow,Xrow}

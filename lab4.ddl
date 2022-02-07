@@ -209,7 +209,7 @@ DROP SEQUENCE IF EXISTS auto_venue_id;
 create sequence auto_venue_id;
 
 ALTER TABLE venue ALTER COLUMN venue_id SET DEFAULT nextval('auto_venue_id');
-select setval('auto_venue_id', 119);
+select setval('auto_venue_id', 1000);
 
 CREATE VIEW match_summary AS
 SELECT match_id, team1, team2, team_1, team_2, venue_name, city_name, (CASE WHEN match_winner=team1 THEN team_1 ELSE team_2 END) as matchwinner, win_type, win_margin 
@@ -290,7 +290,7 @@ CREATE VIEW nrr AS
 SELECT t1.id, t1.team_name, t1.team_id, t1.total as run1, t2.total as run2, t1.over as over1, t2.over as over2   from total as t1 join total as t2 on t1.id=t2.id AND t1.inning <> t2.inning; 
 
 CREATE VIEW points_table AS
-SELECT *,  matches-nr-tie-wins AS lose, 2*wins+nr+tie AS points FROM(
+SELECT *,  matches-nr-tie-wins AS lose, 2*wins AS points FROM(
 SELECT season_year, team_name, COUNT(*) AS matches, SUM(CASE WHEN team_id=match_winner THEN 1 ELSE 0 END) AS wins, SUM(CASE WHEN win_type='tie' THEN 1 ELSE 0 END) AS tie, SUM(CASE WHEN win_type='nr' THEN 1 ELSE 0 END) 
 AS nr,  Round(sum(run1)/sum(over1) - sum(run2)/sum(over2),2) AS netrr  FROM match join nrr on id=match_id group by (season_year, team_id, team_name)) AS x ORDER BY points desc, netrr desc;
 

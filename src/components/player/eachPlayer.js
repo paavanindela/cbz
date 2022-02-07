@@ -3,12 +3,15 @@ import { Container, ButtonGroup, Button, Dropdown, DropdownButton } from 'react-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { withRouter } from '../withRouter';
-import { Mirow,Xrow } from '../player/helper';
+import { Mirow, Xrow } from '../player/helper';
 import Bowling from './bowling';
 import Batting from './batting';
 
 const url = 'http://localhost:5000/players/'
-
+const batheader = ["Player Name", "Matches", "Runs", "Fours", "Sixes", "Fiftys", "Highest Score", "Strike Rate", "Average"]
+const bataccess = ["player_name", "matches", "runs", "fours", "sixes", "fifty", "highscore", "sr", "average"]
+const bowlheader = ["Player Name", "Matches", "Runs", "Balls", "Overs", "Wickets", "Economy", "Five Wickets"]
+const bowlaccess = ["player_name", "matches", "runs", "balls", "overs", "wickets", "economy", "fivewicket"]
 
 function Component(props) {
     const index = props.index;
@@ -41,9 +44,9 @@ function Component(props) {
                     <div>
                         <table className='ipl-table'>
                             <tbody>
-                                <Xrow 
-                                    headers={["Player Name","Matches","Runs","Fours","Sixes","Fiftys","Highest Score","Strike Rate","Average"]}
-                                    access={["player_name","matches","runs","fours","sixes","fifty","highscore","sr","average"]}
+                                <Xrow
+                                    headers={batheader}
+                                    access={bataccess}
                                     data={data.battingstats}></Xrow>
                             </tbody>
                         </table>
@@ -54,12 +57,20 @@ function Component(props) {
             </div>;
         }
         else {
-            return <div className="App">
-                <header className="App-header">
-                    {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                    <p> PLAYER HAS NOT BATTED </p>
-                </header>
-            </div>
+            return <div className='ipl-table-wrapper' style={{ width: "100%" }}>
+                <div className='table-section'>
+                    <div>
+                        <table className='ipl-table'>
+                            <tbody>
+                                <Xrow
+                                    headers={batheader}
+                                    name={data.info.player_name}></Xrow>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <p></p>
+            </div>;
         }
     }
     if (index === 3) {
@@ -70,9 +81,9 @@ function Component(props) {
                     <div>
                         <table className='ipl-table'>
                             <tbody>
-                                <Xrow 
-                                    headers={["Player Name","Matches","Runs","Balls","Overs","Wickets","Economy","Five Wickets"]}
-                                    access={["player_name","matches","runs","balls","overs","wickets","economy","fivewicket"]}
+                                <Xrow
+                                    headers={bowlheader}
+                                    access={bowlaccess}
                                     data={data.bowlingstats}></Xrow>
                             </tbody>
                         </table>
@@ -83,12 +94,20 @@ function Component(props) {
             </div>;
         }
         else {
-            return <div className="App">
-                <header className="App-header">
-                    {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                    <p> PLAYER HAS NOT BOWLED </p>
-                </header>
-            </div>
+            return <div className='ipl-table-wrapper' style={{ width: "100%" }}>
+                <div className='table-section'>
+                    <div>
+                        <table className='ipl-table'>
+                            <tbody>
+                                <Xrow
+                                    headers={bowlheader}
+                                    name={data.info.player_name}></Xrow>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <p></p>
+            </div>;
         }
     }
     return <div></div>;
