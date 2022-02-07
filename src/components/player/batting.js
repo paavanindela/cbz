@@ -11,10 +11,10 @@ function Batting(props) {
   var options = {
     chart: { height: 350, type: 'line', stacked: false },
     dataLabels: { enabled: false },
-    stroke: { width: [1,1,1,1] },
+    stroke: { width: [1,1,1,1,1] },
     title: { text: player_name + "'s Batting Skills", align: 'left', offsetX: 110 },
     xaxis: {
-      categories: data.map(val => val.match_id),
+      categories: [""].concat(data.map(val => val.match_id)).concat([""]),
     },
     yaxis: [
       {
@@ -42,41 +42,41 @@ function Batting(props) {
     {
       name: 'Less Than Thirty',
       type: 'column',
-      data: data.map(val => {
+      data: [null].concat(data.map(val => {
         if (val.runs < 30) return val.runs;
         return null;
-      }),
+      })).concat([null]),
     },
     {
       name: 'Thirties',
       type: 'column',
-      data: data.map(val => {
+      data: [null].concat(data.map(val => {
         if (val.runs >= 30 && val.runs < 50) return val.runs;
         return null;
-      }),
+      })).concat([null]),
     },
     {
       name: 'Fifties',
       type: 'column',
-      data: data.map(val => {
+      data: [null].concat(data.map(val => {
         if (val.runs >= 50 && val.runs<100) return val.runs;
         return null;
-      }),
+      })).concat([null]),
     },
     {
       name: 'Centuries',
       type: 'column',
-      data: data.map(val => {
+      data: [null].concat(data.map(val => {
         if (val.runs >= 100) return val.runs;
         return null;
-      }),
+      })).concat([null]),
     },
     {
       name: 'Runs',
       type: 'line',
-      data: data.map(val => {
+      data: [null].concat(data.map(val => {
         return val.runs;
-      }),
+      })),
     }      // add running average
   ]
   // console.log(plotData)

@@ -156,12 +156,12 @@ class rMatch extends React.Component {
 		else return (
 			<div className='App'>
 				<nav>
-					<label class="logo">{headList[this.state.component - 1]}</label>
+					<label className="logo">{headList[this.state.component - 1]}</label>
 					<ul className='fadeshow1'>
 						<li><a href="#" onClick={() => { this.changeComponent(3) }}>Match Info</a></li>
 						<li>
 							<a href="#scorecard">ScoreCard
-								<i class="fas fa-caret-down"></i>
+								<i className="fas fa-caret-down"></i>
 							</a>
 							<ul>
 								<li><a href='#inning1' onClick={() => { this.changeComponent(1) }}>Inning1</a></li>

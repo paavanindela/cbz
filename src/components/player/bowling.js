@@ -39,7 +39,7 @@ function Bowling(props) {
         legend: { horizontalAlign: 'left', offsetX: 40 },
         plotOptions: {
             bar: {
-                columnWidth: '40px',
+                columnWidth: '10px',
             }
         }
     };

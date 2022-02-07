@@ -19,7 +19,7 @@ const imgLs = [l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l13]
 
 function IndMatch(props) {
 	const entry = props.entry
-	console.log(entry)
+	// console.log(entry)
 	return (
 		<Link to={"/matches/" + String(entry.match_id)} style={{ textDecoration: "none" }}>
 			<div style={{width:"80%",marginLeft:"10%"}}>

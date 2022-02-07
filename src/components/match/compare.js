@@ -14,6 +14,7 @@ class Compare extends React.Component {
 		this.state = {
 			data: null,
 			loading: 0,
+			mylist : [],
 		};
 	}
 	componentDidMount() {
@@ -44,12 +45,42 @@ class Compare extends React.Component {
 				return response.json();
 			})
 			.then(rdata => {
+				let lS = this.getWickets(rdata.inning1,'red').concat(
+					this.getWickets(rdata.inning2,'blue')
+				)
 				this.setState({
 					data: rdata,
 					loading: r,
+					mylist: lS
 				});
 				// console.log(this.state.data)
 			});
+	}
+	getPoint = (xx,yy,sc) => {
+		return {
+			x: xx,
+			y: yy,
+			marker: {
+				size: 3.5,
+				fillColor: '#fff',
+				strokeColor: sc,
+				radius: 1.75,
+				cssClass: 'apexcharts-custom-class'
+			},
+		}
+	}
+	getWickets = (nP,sc) => {
+		let List = []
+		for(let x in nP){
+			let delX = 0, delY = 0
+			nP[x].wickets = Number(nP[x].wickets)
+			while(nP[x].wickets > 0){
+				List.push(this.getPoint(nP[x].over_id+delX,Number(nP[x].cumruns)+delY,sc));
+				nP[x].wickets--;
+				delY += 1.75
+			}
+		}
+		return List
 	}
 	render() {
 		let text = "";
@@ -58,8 +89,8 @@ class Compare extends React.Component {
 		else {
 			const data = this.state.data;
 			var list = [];
-			for (var i = 1; i <= 120; i++) {
-				list.push(i * 1.0 / 6);
+			for (var i = 0; i <= 20; i++) {
+				list.push(i);
 			}
 			var options = {
 				chart: { height: 350, type: 'line', stacked: false },
@@ -75,12 +106,6 @@ class Compare extends React.Component {
 					tickAmount: 21,
 					max: 21,
 					min: 0,
-
-					labels: {
-						formatter: function (value) {
-							return Math.floor(value) + 0.1 * Math.round(6 * (value % 1));
-						}
-					}
 				},
 
 				yaxis: {
@@ -95,79 +120,27 @@ class Compare extends React.Component {
 					enabled: false
 				},
 				annotations: {
-					points:
-						data.inning1.map(val => {
-							if (val.wickets > 0)
-								return {
-									x: (val.ball_no * 1.0) / 6,
-									y: val.cumruns,
-									marker: {
-										size: 4,
-										fillColor: '#fff',
-										strokeColor: 'red',
-										radius: 2,
-										cssClass: 'apexcharts-custom-class'
-									},
-								}
-						}).concat(
-							data.inning2.map(val => {
-								if (val.wickets > 0)
-									return {
-										x: (val.ball_no * 1.0) / 6,
-										y: val.cumruns,
-										marker: {
-											size: 4,
-											fillColor: '#fff',
-											strokeColor: 'blue',
-											radius: 2,
-											cssClass: 'apexcharts-custom-class'
-										},
-									}
-							})
-						)
-
+					points: this.state.mylist
 				},
 
 				tooltip: {
 					fixed: { enabled: true, position: 'topLeft', offsetY: 30, offsetX: 60 },
-					// custom: 
-					// 	 function({series, seriesIndex, dataPointIndex, w}) {
-					// 	  return(
-					// 	  '<div> '+  w.globals.labels[dataPointIndex] +'</div>' + 	   
-					// 	  '<div class="arrow_box">' +
-					// 		'<span> 1: ' + series[0][dataPointIndex] + '</span>' +
-					// 		'</div>' +
-					// 		'<div class="arrow_box">' +
-					// 		'<span> 2: ' + series[1][dataPointIndex] + '</span>' +
-					// 		'</div>' 
-					// 	  )
-					// 	}
-
 				},
 				legend: {
 					position: 'top', horizontalAlign: 'left', offsetX: 40
 					, fontSize: '18px',
 				},
-
-				//   plotOptions: {
-				// 	line: {
-				// 		columnWidth: '10px',
-				// 	}
-				// 	line: {
-
-				// 	}
-				// }
 			};
 			var series = [
 				{
 					name: "1 - " + data.summary.team_name1,
 					type: 'line',
-					data: data.inning1.map(val => val.cumruns),
+					data: [0].concat(data.inning1.map(val => val.cumruns)),
 				},
 				{
 					name: "2 - " + data.summary.team_name2,
 					type: 'line',
-					data: data.inning2.map(val => val.cumruns),
+					data: [0].concat(data.inning2.map(val => val.cumruns)),
 				},       // add running average
 			]
 			return (

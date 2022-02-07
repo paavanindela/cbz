@@ -75,11 +75,11 @@ async function getSingle(id) {
 async function getComparison(id) {
 
   const inning1 = await pool.query(
-    "SELECT ball_no, cumruns, wickets FROM worm WHERE match_id=$1 AND innings_no=$2 ORDER BY ball_no", 
+    "SELECT over_id, cumruns, wickets FROM worm WHERE match_id=$1 AND innings_no=$2 ORDER BY over_id", 
     [id, 1]
   );
   const inning2 = await pool.query(
-    "SELECT ball_no, cumruns, wickets FROM worm WHERE match_id=$1 AND innings_no=$2 ORDER BY ball_no", 
+    "SELECT over_id, cumruns, wickets FROM worm WHERE match_id=$1 AND innings_no=$2 ORDER BY over_id", 
     [id, 2]
   );
   const summary = await pool.query(

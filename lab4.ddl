@@ -250,9 +250,11 @@ SELECT * from
 (SELECT match_id, player_name AS player_name2, role_desc as role_desc2, rank() over (partition by match_id order by player_id) as rnk from match join team on team2=team_id natural join player_match natural join player) AS y) ;
 
 CREATE VIEW worm AS
-SELECT *, SUM(runs) OVER (PARTITION BY match_id, innings_no order by ball_no ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS cumruns FROM(
-SELECT match_id, innings_no, (over_id-1)*6+ball_id AS ball_no, SUM(extra_runs + runs_scored) as runs, count(out_type) as wickets from 
-(SELECT match_id, innings_no, over_id, (CASE WHEN ball_id>6 THEN 6 ELSE ball_id END) AS ball_id, extra_runs, runs_scored, out_type FROM ball_by_ball) AS x  group by (match_id, innings_no, over_id, ball_id)) AS y order by ball_no;
+SELECT *,SUM(runs) OVER (PARTITION BY match_id, innings_no order by over_id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS cumruns FROM(
+SELECT match_id, innings_no, over_id, SUM(extra_runs + runs_scored) as runs, count(out_type) as wickets from 
+ball_by_ball group by (match_id, innings_no, over_id)) as y order by over_id;
+
+--(SELECT match_id, innings_no, over_id, (CASE WHEN ball_id>6 THEN 6 ELSE ball_id END) AS ball_id, extra_runs, runs_scored, out_type FROM ball_by_ball) AS x  group by (match_id, innings_no, over_id, ball_id)) AS y order by ball_no;
 
 CREATE VIEW match_summary1 AS
 SELECT * from (
