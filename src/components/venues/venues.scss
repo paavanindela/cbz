@@ -110,15 +110,15 @@
 .box{
 	position:relative;
 	// left:50%;
-	// top:50%;
+	top:50%;
 	// transform: translate(-50%,-50%);
     background-color: rgba(0, 0, 0, 0.89);
 	border-radius:3px;
 	padding:70px 100px;
     min-width: 40%;
     max-width: 50%;
-    
-    margin: auto;
+    margin-left: 25%;
+    margin-right: 25%;
     background-image: linear-gradient(to left top ,white, rgb(4, 78, 112) );
     
 }

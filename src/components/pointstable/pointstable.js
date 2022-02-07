@@ -14,7 +14,8 @@ function SelectYear(props){
 			<Link 
 				to={'/pointstable/'+String(val.season_year)}
 				style={{textDecoration:"none"}}
-				className="card">
+				className="card"
+				key={idx}>
 					{val.season_year}
 			</Link>
 		);

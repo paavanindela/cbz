@@ -12,6 +12,7 @@ import { SPointsTable} from './components/pointstable/pointstable';
 import { EachYear} from './components/pointstable/eachYear';
 import { SVenues } from './components/venues/venues';
 import { EachVenue } from './components/venues/eachVenue';
+import { Create} from './components/venues/create';
 
 function App() {
   return <BrowserRouter>
@@ -29,6 +30,7 @@ function App() {
         <Route path="/venues" element={<SVenues/>}>
           <Route path=":venueId" element={<EachVenue />} />
         </Route>
+        <Route path="/venues/add" element={<Create />} />
         <Route path="*" element={<Error />} />
       </Route>
     </Routes>

@@ -10,7 +10,13 @@ function FiScore(props) {
     const options = {
         title: 'First Innings Average Score',
         vAxis: { title: "Runs",minValue: 0},
-        hAxis: { title:"Season year"},
+        hAxis: { title:"Season year",
+            minValue: 2011,
+            maxValue: 2018,
+            gridlines: {
+                count: 4
+            }
+        },  
         legend: { position: 'bottom' }
     };
     const lineData = [
