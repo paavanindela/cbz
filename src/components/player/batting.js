@@ -26,26 +26,16 @@ function Batting(props) {
         min: 0,
       },
     ],
-    tooltip: { fixed: { enabled: true, position: 'topLeft', offsetY: 30, offsetX: 60 }, },
+    tooltip: { 
+      fixed: { enabled: true, position: 'topLeft', offsetY: 30, offsetX: 60 },
+      enabledOnSeries: [4],
+    },
     legend: { horizontalAlign: 'left', offsetX: 40 },
     plotOptions: {
       bar: {
         columnWidth: '10px',
       }
     },
-    // colors: [
-    //   function({ value, seriesIndex, w }) {
-    //     if (value < 30) {
-    //       return '#FF0000'
-    //     } else if( value >=50){
-    //       return '#0000FF'
-    //     } else if( value < 50 && value >=30){
-    //       return '#00FF00'
-    //     } else {
-    //       return '#FFFF00'
-    //     }
-    //   }
-    // ],
     colors:['#FF0000', '#00FF00', '#0000FF','#FFFFFF','#000000']
   };
   var series = [
@@ -54,6 +44,7 @@ function Batting(props) {
       type: 'column',
       data: data.map(val => {
         if (val.runs < 30) return val.runs;
+        return null;
       }),
     },
     {
@@ -61,6 +52,7 @@ function Batting(props) {
       type: 'column',
       data: data.map(val => {
         if (val.runs >= 30 && val.runs < 50) return val.runs;
+        return null;
       }),
     },
     {
@@ -68,6 +60,7 @@ function Batting(props) {
       type: 'column',
       data: data.map(val => {
         if (val.runs >= 50 && val.runs<100) return val.runs;
+        return null;
       }),
     },
     {
@@ -75,6 +68,7 @@ function Batting(props) {
       type: 'column',
       data: data.map(val => {
         if (val.runs >= 100) return val.runs;
+        return null;
       }),
     },
     {
